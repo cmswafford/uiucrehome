@@ -1,5 +1,5 @@
 CREATE DATABASE uiucsd DEFAULT CHARACTER SET = utf8 DEFAULT COLLATE = utf8_general_ci;
-/*tset*/
+USE uiucsd;
 
 CREATE TABLE categories ( category_id INT UNSIGNED AUTO_INCREMENT
                          ,category_name VARCHAR(255) DEFAULT NULL
@@ -50,7 +50,7 @@ CREATE TABLE temperature_logs ( temperature_log_id INT UNSIGNED AUTO_INCREMENT
                                ,value FLOAT DEFAULT NULL
                                ,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                                ,PRIMARY KEY (temperature_log_id)
-                               ,FOREIGN KEY (room_id) REFERENCES rooms(room_id)
+                               ,FOREIGN KEY (device_id) REFERENCES devices(device_id)
                               ) ENGINE=InnoDB;
 
 CREATE TABLE water_logs ( water_log_id INT UNSIGNED AUTO_INCREMENT
@@ -58,5 +58,5 @@ CREATE TABLE water_logs ( water_log_id INT UNSIGNED AUTO_INCREMENT
                          ,value FLOAT DEFAULT NULL
                          ,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                          ,PRIMARY KEY (water_log_id)
-                         ,FOREIGN KEY (room_id) REFERENCES rooms(room_id)
+                         ,FOREIGN KEY (device_id) REFERENCES devices(device_id)
                         ) ENGINE=InnoDB;
