@@ -1,0 +1,51 @@
+/**
+ * Portal Page specific styles
+ */
+#portal { width:1024px; height:768px; }
+.steelGradient { -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(0.45,rgba(0,0,0,1)), to(rgba(0,0,0,0.2))); }
+
+#portalLogo { height:80px; }
+#portalLogo { background: url(../images/logo3.png) no-repeat; background-position:center; padding:10px 0 10px 0; margin:5px 0 -5px 0;}
+
+.inactive { display:none; }
+.floatRight { float:right; }
+.floatLeft { float:left; }
+.centered { margin:0 auto; }
+.hfill { height:100%; }
+.wfill { width:100%; }
+.notext { text-indent: -9999px; }
+.icon { font-size:15px; line-height:40px; }
+.iconBox { width:120px; }
+.iconSpacer { width:212px; }
+
+.portalButton { width:83px; height:83px; border-radius:83px; margin:auto; margin-top: 1.4em; }
+.buttonset { overflow:none; width: 140px;}
+
+.graphContainer { position:relative; }
+.indicators { width:84px; height:22px; position:relative; margin:0 auto; }
+.indicator { width:9px; height:9px; border-radius:9px; background-color:#444; margin:6px; }
+.indicating { background-color:#777 !important; -webkit-box-shadow: 0 0 4px 0 #eee; }
+.leftArrow { width:100px; }
+.rightArrow { width:100px; }
+.centerGraphViewPort { width:800px; height:400px; margin:30px 12px 0px 12px; }
+.centerGraphLandscape { width:4800px; height:400px; margin-left:0px; }
+#graphic1, #graphic2, #graphic3, #graphic4, #graphic5, #graphic6 {  height:400px; width:800px; }
+
+.graphicButton { font-size:1.5em; height:480px; line-height:480px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000;  }
+
+#tempGraphic {background-image: url(../images/temp.png); background-position: center; background-position-y:35px; background-repeat: no-repeat;}
+#efficiencyGraphic {background-image: url(../images/efficiency.png); background-position: center; background-position-y:35px; background-repeat: no-repeat;}
+
+.portalButton { background-repeat:none; background-position:center; }
+.infoLink {background-image:url(../images/info.png); }
+.solarLink {background-image:url(../images/solar.png); }
+.hvacLink {background-image:url(../images/thermo.png); }
+.lightingLink {background-image:url(../images/lighting.png);  }
+.monitorLink {background-image:url(../images/monitor.png);  }
+.waterLink {background-image:url(../images/water.png); }
+.infoLink:hover {background-image:url(../images/infoOver.png); }
+.solarLink:hover {background-image:url(../images/solarOver.png); }
+.hvacLink:hover {background-image:url(../images/thermoOver.png); }
+.lightingLink:hover {background-image:url(../images/lightingOver.png); }
+.monitorLink:hover {background-image:url(../images/monitorOver.png); }
+.waterLink:hover {background-image:url(../images/waterOver.png); }

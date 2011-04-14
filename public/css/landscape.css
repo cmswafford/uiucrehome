@@ -1,0 +1,61 @@
+/**
+ * Landscape orientation specific styles
+ */
+.fullpage {
+	box-sizing: border-box;
+	margin: 0 auto;
+	margin-top: 20px;
+	width: 1024px;
+	height: 768px;
+	text-align: center;
+	background-repeat:repeat-x;
+	z-index:-5;
+}
+
+.lightbox { width:100%; overflow:hidden; }
+
+.top { 
+	height:110px; 
+	overflow:hidden; 
+	width:100%; 
+}
+
+.portalTop {
+	height: 160px;
+}
+ 
+.middle { 
+	height:510px; 
+	overflow:hidden; 
+	width:100%; 
+}
+
+.portalMiddle {
+	height:460px; 
+}
+
+.bottom { 
+	height:148px; 
+	overflow:hidden; 
+	width:100%; 
+}
+
+.threeColumnLeft, .threeColumnRight {
+	width:360px;
+	position:relative;
+}
+
+.threeColumnLeft {
+	float:left;
+}
+
+.threeColumnRight {
+	float:right;
+}
+
+.threeColumnMiddle { 
+	margin-right:360px; 
+	margin-left:360px; 
+	height:100%;
+	position:relative;
+}

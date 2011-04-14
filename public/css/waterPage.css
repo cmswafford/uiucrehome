@@ -1,0 +1,24 @@
+.w1  { background: -webkit-gradient(linear, left top, right top, from(#3b0055), to(#39035a)); }
+.w2  { background: -webkit-gradient(linear, left top, right top, from(#39035a), to(#360560)); }
+.w3  { background: -webkit-gradient(linear, left top, right top, from(#360560), to(#310866)); }
+.w4  { background: -webkit-gradient(linear, left top, right top, from(#310866), to(#310766)); }
+.w5  { background: -webkit-gradient(linear, left top, right top, from(#310766), to(#2c0b6f)); }
+.w6  { background: -webkit-gradient(linear, left top, right top, from(#2c0b6f), to(#270f76)); }
+.w7  { background: -webkit-gradient(linear, left top, right top, from(#270f76), to(#23137f)); }
+.w8  { background: -webkit-gradient(linear, left top, right top, from(#23137f), to(#1e1887)); }
+.w9  { background: -webkit-gradient(linear, left top, right top, from(#1e1887), to(#1c1e90)); }
+.w10 { background: -webkit-gradient(linear, left top, right top, from(#1c1e90), to(#192397)); }
+.w11 { background: -webkit-gradient(linear, left top, right top, from(#192397), to(#1a2b9f)); }
+.w12 { background: -webkit-gradient(linear, left top, right top, from(#1a2b9f), to(#1a33a5)); }
+.w13 { background: -webkit-gradient(linear, left top, right top, from(#1a33a5), to(#1e3fab)); }
+.w14 { background: -webkit-gradient(linear, left top, right top, from(#1e3fab), to(#2753b3)); }
+.w15 { background: -webkit-gradient(linear, left top, right top, from(#2753b3), to(#2c5fb6)); }
+.w16 { background: -webkit-gradient(linear, left top, right top, from(#2c5fb6), to(#356fbc)); }
+.w17 { background: -webkit-gradient(linear, left top, right top, from(#356fbc), to(#3f82c0)); }
+.w18 { background: -webkit-gradient(linear, left top, right top, from(#3f82c0), to(#4992c5)); }
+.w19 { background: -webkit-gradient(linear, left top, right top, from(#4992c5), to(#50a1c8)); }
+.w20 { background: -webkit-gradient(linear, left top, right top, from(#50a1c8), to(#5ab3cd)); }
+
+.ventGradient { font-weight:bold; color: #92fffe; font-size:.8em; margin-top: 5px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.2))); }
+.andSign { font-size:.7em; }
+.word { display:inline-block;}

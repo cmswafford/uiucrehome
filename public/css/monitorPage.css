@@ -1,0 +1,20 @@
+.house { height:658px; width:510px; z-index:10;}
+.monitorTop { height:110px !important;}
+#holder { margin:0 auto; margin-top:-90px;}
+.monitorInfo { width:480; height:628px; margin-bottom:15px; margin-top:15px; padding: 0px 15px 0px 15px; border-left:1px solid #333; text-align:left; }
+#space { color:#eee; background-color:red; border-radius:8px; padding-top:6px; padding-left:12px; padding-right:12px; padding-bottom:3px; background: -webkit-gradient(linear, center top, center bottom, from(#555), to(#222)); }
+#usageStats>h3 { padding-top:20px; padding-left:10px; font-size:0.8em; }
+#usageStats span { color:#fff200; }
+#costUsage { color:#39b54a !important; }
+
+.leftButton { margin-left:85px; border:1px solid #555; background-color:#333; border-top-left-radius: 20px; border-bottom-left-radius:20px; font-size:0.5em; text-align:center; padding:8px 10px 5px 15px; }
+.centerbutton { border:1px solid #555; background-color:#333; font-size:0.5em; text-align:center; padding:8px 10px 5px 10px; }
+.rightButton { border:1px solid #555; background-color:#333; border-top-right-radius: 20px; border-bottom-right-radius:20px;font-size:0.5em; text-align:center; padding:8px 15px 5px 10px; }
+.glossy { background: -webkit-gradient(linear, center top, center bottom, from(#434343), color-stop(0.50,rgba(67,67,67,1)), color-stop(0.55,rgba(46,46,46,1)), to(#2e2e2e)); }
+.glossy:hover { background: -webkit-gradient(linear, center top, center bottom, from(#1d90c6), color-stop(0.50,rgba(29,144,198,1)), color-stop(0.55,rgba(2,130,191,1)), to(#0282bf)); }
+#monitorCenterGraphViewport { width:480px; overflow:hidden; height:310px; }
+#historyCenterGraphLandscape { width:1920px; height:310px; }
+#historyGraphic1, #historyGraphic2, #historyGraphic3, #historyGraphic4 {  height:310px; width:480px; }
+#monitorGraphButtonLeft { width:100px; height:30px; text-size:0.5em; margin-top:-30px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000; }
+#monitorGraphButtonRight { width:100px; height:30px; text-size:0.5em; margin-top:-30px; text-align:right; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000; }
+.monitorIndicator { width:9px; height:9px; border-radius:9px; background-color:#444; margin:6px; }

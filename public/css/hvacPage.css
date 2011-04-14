@@ -1,0 +1,97 @@
+/*
+ * Thermostat Page specific styles
+ */
+#bigTempGuage { height:110px; width:718px; }
+.hvacGraph { height:400px; width:100%; }
+.guageBox { width:27px; height:45px; margin:2px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.6)), color-stop(0.2,rgba(0,0,0,1)),color-stop(0.5,rgba(0,0,0,1)), color-stop(0.8,rgba(0,0,0,1)), to(rgba(0,0,0,0.6))); margin-top: 33px;}
+.guageBoxLast { -webkit-border-top-right-radius: 7px; -webkit-border-bottom-right-radius: 7px; }
+.guageBoxFirst { -webkit-border-top-left-radius: 7px; -webkit-border-bottom-left-radius: 7px; margin-left:100px; }
+.t1  { background: -webkit-gradient(linear, left top, right top, from(#011ebe), to(#0b28d2)); }
+.t2  { background: -webkit-gradient(linear, left top, right top, from(#0b28d2), to(#1e32c1)); }
+.t3  { background: -webkit-gradient(linear, left top, right top, from(#1e32c1), to(#323daf)); }
+.t4  { background: -webkit-gradient(linear, left top, right top, from(#323daf), to(#4c4a99)); }
+.t5  { background: -webkit-gradient(linear, left top, right top, from(#4c4a99), to(#685981)); }
+.t6  { background: -webkit-gradient(linear, left top, right top, from(#685981), to(#87696a)); }
+.t7  { background: -webkit-gradient(linear, left top, right top, from(#87696a), to(#a17451)); }
+.t8  { background: -webkit-gradient(linear, left top, right top, from(#a17451), to(#bc823a)); }
+.t9  { background: -webkit-gradient(linear, left top, right top, from(#bc823a), to(#d38c27)); }
+.t10 { background: -webkit-gradient(linear, left top, right top, from(#d38c27), to(#e89413)); }
+.t11 { background: -webkit-gradient(linear, left top, right top, from(#e89413), to(#f99b06)); }
+.t12 { background: -webkit-gradient(linear, left top, right top, from(#f99b06), to(#ff9d00)); }
+.t13 { background: -webkit-gradient(linear, left top, right top, from(#ff9d00), to(#ff9900)); }
+.t14 { background: -webkit-gradient(linear, left top, right top, from(#ff9900), to(#ff9200)); }
+.t15 { background: -webkit-gradient(linear, left top, right top, from(#ff9200), to(#ff7b00)); }
+.t16 { background: -webkit-gradient(linear, left top, right top, from(#ff7b00), to(#fb6a00)); }
+.t17 { background: -webkit-gradient(linear, left top, right top, from(#fb6a00), to(#f35f00)); }
+.t18 { background: -webkit-gradient(linear, left top, right top, from(#f35f00), to(#ed5300)); }
+.t19 { background: -webkit-gradient(linear, left top, right top, from(#ed5300), to(#e84b00)); }
+.t20 { background: -webkit-gradient(linear, left top, right top, from(#e84b00), to(#e64700)); }
+
+.downTriangle {
+	margin-top:20px;
+	margin-left:10px;
+	width:0; height:0px;
+	line-height:0;
+	border-top:15px solid #333;
+	border-left:15px solid rgba(0,0,0,0);
+	border-right:15px solid rgba(0,0,0,0);
+	-webkit-box-shadow: 0 -1px 0 #111;
+	z-index: 5;
+}
+.upTriangle {
+	margin-top:10px;
+	margin-left:10px;
+	width:0; height:4px;
+	line-height:0;
+	border-bottom:15px solid #333;
+	border-left:15px solid rgba(0,0,0,0);
+	border-right:15px solid rgba(0,0,0,0);
+	-webkit-box-shadow: 0 1px 0 #111;
+	z-index: 5;
+}
+
+.thermoButton { 
+	width: 50px; 
+	height: 50px; 
+	border-radius:50px; 
+	margin: 10px; 
+	background: -webkit-gradient(linear, center top, center bottom, from(#aaa), color-stop(0.50,rgba(160,160,160,1)), color-stop(0.55,rgba(120,120,120,1)), to(#333));
+ }
+
+.thermoButton:hover {
+ 	background: -webkit-gradient(linear, center top, center bottom, from(#999), color-stop(0.50,rgba(140,140,140,1)), color-stop(0.55,rgba(100,100,100,1)), to(#222));
+ 	-webkit-box-shadow: 0 -1px 0 0 black, inset 0 0 7px 0 black; 
+}
+
+.statusText { text-align:left; font-size:.7em; padding:2px; margin-top:4px; margin-bottom:3px;}
+
+.statusHeader { text-align:left; font-size:.7em; padding:2px; font-style: italic;}
+
+li>h6 { text-align:left; margin-left:10px; line-height:18px; font-size:15px;}
+.statusHeader { color:#777; }
+.statusWord { font-size: 1.1em;}
+#thermoLeft { text-align:left; }
+#thermoLeft>h2 { solid #666; padding-bottom:5px;}
+.modeholder { border-top: 1px solid #333; border-bottom: 1px solid #333; width:170px; padding-bottom:2px;}
+#thermoLeft>h3 { padding-top:4px; padding-bottom:4px; }
+
+.hvacColumn { width:206px; }
+.hvacSpacer { width:100px; }
+.targetTemps { font-size: 1.7em; }
+.heatGradient { font-weight:bold; color: #ff6900; font-size:.8em; margin-top: 5px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.2))); }
+#inside { width:110px; height:90px; }
+#outside { width:110px; height:90px; }
+#inside>h1 { margin-top:20px; font-size:1.4em; padding:7px; color:#1df7b2; }
+#outside>h1 { margin-top:20px; font-size:1.4em; padding:7px; color:#eee; }
+#inside>h4 { font-size:0.9em; font-style:italic; }
+#outside>h4 { font-size:0.9em; font-style:italic;}
+#insideIndicator { width:27px; height:47px; margin-left:533px; position:relative; top:2px; background: url(../images/insideIndicator.png); }
+#outsideIndicator { width:27px; height:47px; margin-left:472px; position:relative; top:15px; background: url(../images/outsideIndicator.png); }
+.thermIndicator { width:9px; height:9px; border-radius:9px; background-color:#444; margin:6px; }
+#thermLeftArrow { width:100px; }
+#thermRightArrow { width:100px; }
+.thermViewPort { width:800px; height:380px; margin:0px 12px 0px 12px; overflow:hidden; }
+.thermLandscape { width:4800px; height:380px; margin-left:0px; }
+#thermGraphic1, #thermGraphic2, #thermGraphic3, #thermGraphic4 {  height:380px; width:800px; }
+.thermGraphicButton { font-size:1.5em; height:330px; line-height:330px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000;  }
+.clock { margin-top: 7px;}
