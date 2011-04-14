@@ -1,4 +1,4 @@
-CREATE DATABASE uiucsd DEFAULT CHARACTER SET = utf8 DEFAULT COLLATE = utf8_general_ci;
+asdfjisdfj;af;lasfdjlksdjfCREATE DATABASE uiucsd DEFAULT CHARACTER SET = utf8 DEFAULT COLLATE = utf8_general_ci;
 USE uiucsd;
 
 CREATE TABLE categories ( category_id INT UNSIGNED AUTO_INCREMENT
