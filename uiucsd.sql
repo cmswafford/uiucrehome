@@ -54,7 +54,7 @@ CREATE TABLE temperature_logs ( temperature_log_id INT UNSIGNED AUTO_INCREMENT
                               ) ENGINE=InnoDB;
 
 CREATE TABLE water_logs ( water_log_id INT UNSIGNED AUTO_INCREMENT
-                         ,room_id INT UNSIGNED DEFAULT NULL
+                         ,device_id INT UNSIGNED DEFAULT NULL
                          ,value FLOAT DEFAULT NULL
                          ,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                          ,PRIMARY KEY (water_log_id)
