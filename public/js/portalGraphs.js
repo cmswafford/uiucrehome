@@ -29,7 +29,7 @@ chartStart[3] = Date.UTC(currentYear, currentMonth, currentDate-3, (currentHour+
 var chart = new Array();
 var setCharts = function(chartData) {
   // eval the JSON
-  var chartData = eval('('+chartData+')');
+  chartData = eval('('+chartData+')');
 
 	for(i=1;i<=4;i++) {
   //console.log(i);

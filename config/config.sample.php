@@ -7,7 +7,7 @@ $aConfig = array ();
 $aConfig['mysql'] = array ();
 
 # System Paths
-$aConfig['root_path']	    = '/var/www/uiucrehome';
+$aConfig['root_path']	    = '/var/www/uiucrehome/'; # Needs trailing /
 $aConfig['config_path']   = $aConfig['root_path'].'config/';
 $aConfig['public_path']	  = $aConfig['root_path'].'public/';
 $aConfig['cron_path']	    = $aConfig['root_path'].'cron/';
@@ -29,9 +29,6 @@ $aConfig['root_url']	    = 'http://localhost';
 $aConfig['js_url']	      = $aConfig['root_url'].'/js/';
 $aConfig['css_url']	      = $aConfig['root_url'].'/public/css/';
 $aConfig['img_url']	      = $aConfig['root_url'].'/images/';
-
-# Cookie settings
-//$aConfig['cookie_domain']  = ".uiucsd.sktsoft.com";
 
 # Default HTML settings
 $aConfig['display_header']  = false;
