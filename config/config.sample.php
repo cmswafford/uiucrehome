@@ -48,4 +48,3 @@ $aConfig['mysql']['password'] = '********';
 
 $aConfig['env'] = 'development';
 
-?>
