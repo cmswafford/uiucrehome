@@ -1,3 +1,0 @@
-This is my file created from my-branch.
-
-This message was added in test branch.
