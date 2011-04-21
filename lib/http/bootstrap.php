@@ -26,6 +26,9 @@ $oLog   = new Logger( ROOT_PATH.'log/default.log' );
 require_once(LIB.'misc/DB.php');
 require_once(LIB.'misc/dbObject.php');
 
+# Include FirePHP
+require_once(LIB.'misc/FirePHP-fb.php');
+
 $oCategories      = new Categories();
 $oRooms           = new Rooms();
 $oDevices         = new Devices();

@@ -1,11 +1,24 @@
+Highcharts.setOptions({
+   global: {
+      useUTC: false
+   }
+});
+
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var d = new Date();
-var currentHour = d.getHours();
+/*var currentHour = d.getHours();
 var currentMonthWord = months[d.getMonth()];
 var currentMonth = d.getMonth();
 var currentDate = d.getDate();
 var currentMinutes = d.getMinutes();
 var currentYear = d.getFullYear();
+
+var chartStart = new Array();
+chartStart[0] = Date.UTC(currentYear, currentMonth, currentDate, currentHour-4, (parseInt(currentMinutes/10)+1)*10, 0);
+chartStart[1] = Date.UTC(currentYear, currentMonth, currentDate, currentHour-12, (parseInt(currentMinutes/30)+1)*30, 0);
+chartStart[2] = Date.UTC(currentYear, currentMonth, currentDate-1, currentHour+1, 0, 0);
+chartStart[3] = Date.UTC(currentYear, currentMonth, currentDate-3, (currentHour+1), 0, 0);
+*/
 var chartSubtitles = new Array();
 chartSubtitles[0] = 'Past 4 hours';
 chartSubtitles[1] = 'Past 12 hours';
@@ -19,12 +32,12 @@ chartIntervals[1] = 1800000; // 30 min
 chartIntervals[2] = 3600000; // 60 min
 chartIntervals[3] = 10800000; // 3 hours
 
-var chartStart = new Array();
-chartStart[0] = Date.UTC(currentYear, currentMonth, currentDate, currentHour-4, (parseInt(currentMinutes/10)+1)*10, 0);
-chartStart[1] = Date.UTC(currentYear, currentMonth, currentDate, currentHour-12, (parseInt(currentMinutes/30)+1)*30, 0);
-chartStart[2] = Date.UTC(currentYear, currentMonth, currentDate-1, currentHour+1, 0, 0);
-chartStart[3] = Date.UTC(currentYear, currentMonth, currentDate-3, (currentHour+1), 0, 0);
-//console.log(currentHour);
+function getNextPoint( page, graph, duration )
+{
+  var handleGetNextPoint = function (response) { response = eval('('+response+')'); console.log(response); return response.point; };
+
+  $.ajax({ url: WWW+'/ajax/getNextPoint.php', data: { page: page,  graph: graph, duration: duration }, success: handleGetNextPoint });
+}
 
 var chart = new Array();
 var setCharts = function(chartData) {
@@ -32,13 +45,24 @@ var setCharts = function(chartData) {
   chartData = eval('('+chartData+')');
 
 	for(i=1;i<=4;i++) {
-  //console.log(i);
 		var graphic = "graphic" + i;
 		chart[i] = new Highcharts.Chart({
 			chart: {
 				renderTo: graphic,
 				defaultSeriesType: 'areaspline',
 				backgroundColor: 'rgba(0,0,0,0)',
+        events: {
+          load: function() {
+   
+               // set up the updating of the chart each second
+               var series = this.series[0];
+               setInterval(function() {
+                  var x = (new Date()).getTime(), // current time
+                     y = getNextPoint('portal', 'timevspower', '4h');
+                  series.addPoint([x, y], true, true);
+               }, chartIntervals[i-1]);
+            }
+          }
 			},
 			title: {
 				text: 'Time vs. Power'
@@ -48,6 +72,7 @@ var setCharts = function(chartData) {
 			},
 			xAxis: {
 				type: 'datetime',
+        dateTimeLabelFormats: { second: '%H:%M' }
 			},
 			yAxis: {
 				title: {
@@ -95,7 +120,7 @@ var setCharts = function(chartData) {
 						}	
 					},
 					pointInterval: chartIntervals[i-1],
-					pointStart: chartStart[i-1]
+					pointStart: chartData[i-1][0][0]*1000
 				}
 			},
 			series: [{
@@ -107,7 +132,6 @@ var setCharts = function(chartData) {
 		                ]
 		            },
 				data: chartData[i-1]
-		
 			}]
 			,
 			navigation: {

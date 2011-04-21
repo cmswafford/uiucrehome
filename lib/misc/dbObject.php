@@ -134,11 +134,12 @@ class dbObject
 
     $i = 0;
     $aData = array();
-    if($r) while( $aRow = mysql_fetch_assoc($r) )
-      $aData[$i++] = $aRow;
+    if($r)
+      while( $aRow = mysql_fetch_assoc($r) )
+        $aData[$i++] = $aRow;
 
     if( isset($aOptions['single']) && $aOptions['single'] === true )
-      return $aData[0];
+      return $aData ? $aData[0] : array();
     else
       return $aData;
   }
