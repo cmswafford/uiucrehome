@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>UIUC ReHome Documentation</title>
+    <style type="text/css">
+    <!--
+      .code { font-family: monospace; display: block; text-indent: 10px;  } 
+    -->
+    </style>
+  </head>
+
+  <body>
+    <h1>UIUC ReHome Server Setup Documentation</h2>
+    <h2>Navigation</h2>
+    <ul>
+      <li><a href="#intro">Intro</a></li>
+      <li><a href="#software">Installing & Configuring Software</a></li>
+      <li><a href="#repository">Setting Up the repository</a></li>
+    </ul>
+
+    <h2 id="repository">Setting Up the Repository</h2>
+    <div>
+      <ol>
+        <li><a href="https://github.com/signup/free">Sign-up</a> or <a href="https://github.com/login">login</a> for github.</li>
+        <li><a href="http://git-scm.com/download">Download</a> and install git</li>
+        <li>Checkout the <a href="https://github.com/cmswafford/uiucrehome">uiucrehome repository</a> on your system.
+          <span class="code">git clone git@github.com:cmswafford/uiucrehome.git</span>
+         <p>This will create a folder named uiucrehome in your current directory. This project will have all the files necessary to host the application.</p>
+        </li>
+      </ol>
+    </div>
+
+    <h2 id="software">Installing & Configuring Software</h2>
+    <div>
+      <p>In order to host an instance of the application, you must have the following software installed:</p>
+      <ul>
+        <li><a href="http://httpd.apache.org/download.cgi">Apache 2.2</a></li>
+        <li><a href="http://dev.mysql.com/downloads/mysql/">MySQL Server 5.1</a></li>
+        <li><a href="http://php.net/downloads.php">PHP 5.3</a></li>
+      </ul>
+      <p>Download and install each of the linked software packages. If you are using a debian based distribution such as Ubuntu, you may use the following command to install all the software.</p>
+      <span class="code">sudo apt-get install apache2 mysql-server php5 libapache2-mod-php5 php5-mysql</span>
+      <p>Next set up apache </p>
+
+      <p></p>
+    </div>
+
+  </body>
+</html>
