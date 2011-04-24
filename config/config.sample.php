@@ -18,11 +18,11 @@ $aConfig['css_path']	    = $aConfig['public_path'].'css/';
 $aConfig['img_path']	    = $aConfig['public_path'].'images/';
 
 # Site Options
-$aConfig['site_name']	          = "UIUCSD";
-$aConfig['site_name_vanity']	  = "UIUC Solar Decathlon";
-$aConfig['page_title']          = "";
-$aConfig['page_title_default']  = "UIUC Solar Decathlon";
-$aConfig['page_title_suffix']   = " | UIUC Solar Decathlon";
+$aConfig['site_name']	          = 'UIUCSD';
+$aConfig['site_name_vanity']	  = 'UIUC Solar Decathlon';
+$aConfig['page_title']          = '';
+$aConfig['page_title_default']  = 'UIUC Solar Decathlon';
+$aConfig['page_title_suffix']   = ' | UIUC Solar Decathlon';
 
 # Default URIs
 $aConfig['root_url']	    = 'http://localhost';
@@ -41,10 +41,10 @@ $aConfig['body_class']      = '';
 $aConfig['debug'] = true;
 
 # Database settings
-$aConfig['mysql']['host']     = "localhost";
+$aConfig['mysql']['host']     = 'localhost';
 $aConfig['mysql']['database'] = 'uiucsd';
-$aConfig['mysql']['user']     = "uiucsd";
-$aConfig['mysql']['password'] = '********';
+$aConfig['mysql']['user']     = 'uiucsd';
+$aConfig['mysql']['password'] = 'uiuc$d2011';
 
 $aConfig['env'] = 'development';
 
