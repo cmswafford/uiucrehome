@@ -8,8 +8,8 @@
 		<!-- iPad proprietary tags 1. Enable fullscreen webapp mode, 2. Make the statusbar black, 3. Disable zoom behavior, 4. Enable the splashScreeen -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-		<meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=0;">		
-		<link rel="apple-touch-startup-image" href="images/splash.png" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=0;">
+		<link rel="apple-touch-startup-image" href="images/startup.png">		
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icon.png" />
 		
 		<!-- StyleSheets -->
@@ -23,8 +23,8 @@
 		<link rel="stylesheet" href="css/date.css" />
 		<link rel="stylesheet" href="css/3column.css" />
 		<link rel="stylesheet" media="all and (orientation:portrait)" href="css/portrait.css" />
-		<link rel="stylesheet" media="all and (orientation:landscape)" href="css/landscape.css" />
-		<link rel="stylesheet" href="css/landscape.css" /> <!-- for desktop sstyling take out later -->
+		<link rel="stylesheet" media="all and (orientation:landscape)" href="css/landscape.css" /> 
+		<link rel="stylesheet" href="css/landscape.css" /> <!-- for desktop styling take out later -->
 
 		
 		<!-- Includes -->
@@ -40,14 +40,14 @@
 		
 	</head>
 	
-	<body>
+	<body id="bod" class="startUp">
 		
 <!-- **************************************************** End header.html ******** Begin Index.html **************************************************************** -->
-		<div id="viewport" class="viewport portalView">
+		<div id="viewport" class="viewport portalView" style="position: absolute;">
 			
-			<div id="landscape" class="landscape portalLandscape">
+			<div id="landscape" class="landscape portalLandscape inactive">
 			
-							<!-- Main Page -->
+				<!-- Start Main Pages -->
 				<div id="portal" class="fullpage">
 					<div class="top portalTop">
 						<div class="threeColumnLeft">
@@ -118,25 +118,6 @@
 					</div>
 					</div> <!-- End Portal Page -->
 				
-				<!-- <div id="lighting" class="fullpage subpage inactive">
-					<div class="top">
-						<div class="threeColumnLeft">
-							<div id="portalLink" class="button homeButton floatLeft">home</div>				
-						</div>
-						<div class="threeColumnRight">
-	
-						</div>
-						<div class="threeColumnMiddle">
-							<div class="header inner logo hfill">
-								<h2 id="portalLogo" class="noText"><span>Re</span> Control</h2>
-								Lighting Page
-							</div>
-						</div>
-					</div>
-					<div class="middle">middle</div>
-					<div class="bottom">bottom</div>
-				</div> -->
-				
 				<div id="info" class="fullpage subpage inactive">
 					<div id="infoMain">
 						<div class="top">
@@ -167,7 +148,7 @@
 							<li id="infoBottom2" class="floatLeft"><img src="images/infoBottom2.png" /></li>
 							<li id="infoBottom3" class="floatLeft"><img src="images/infoBottom3.png" /></li>
 							<li id="infoBottom4" class="floatLeft"><img src="images/infoBottom4.png" /></li>
-							<li id="infoBottom5" class="floatLeft" style="width:182px; overflow:hidden; "><img src="images/infoBottom5.png" /></li>
+							<li id="infoBottom5" class="floatLeft" style="width:184px; overflow:hidden; "><img src="images/infoBottom5.png" /></li>
 						</ul>
 					</div>		
 				</div>
@@ -182,7 +163,7 @@
 							</div>
 							<div class="threeColumnMiddle">
 								<div class="header inner logo hfill">
-									<h2 id="portalLogo" class="noText button"><span>Re</span> Control</h2>
+									<h2 id="portalAltn" class="noText button"><span>Re</span> Control</h2>
 								</div>
 							</div>
 						</div>
@@ -196,7 +177,7 @@
 								</div>
 								
 								<div id="thermCenterGraphViewport" class="thermViewport">
-									<div id="thermCenterGraphLandscape" class="thermLandscape">
+									<div id="thermCenterGraphLandscape" class="landscape thermLandscape">
 										<div id="thermGraphic1" class="lightbox inner centered floatLeft">1</div>
 										<div id="thermGraphic2" class="lightbox inner floatLeft">2</div>
 										<div id="thermGraphic3" class="lightbox floatLeft">3</div>
@@ -240,9 +221,9 @@
 						<div class="bottom">
 							<ul class="tempControls inner hfill">
 								<li class="hvacSpacer notext floatLeft">ReHome Hvac Controls</li>
-								<li id="thermoLeft" class="hvacColumn floatLeft"><h2 class="steelGradient statusWord leftAlign">STATUS</h2><div class="modeholder"><h3 class="heatGradient leftAlign">heat mode</h3></div><div id="jclock2" class="clock"></div></li>
-								<li class="hvacColumn floatLeft hfill"><h5>HEAT IF</h5><h1 id="heatTarget" class="targetTemps">68&deg;F</h1><div class="buttonset inner centered hfill"><div class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
-								<li class="hvacColumn floatLeft hfill"><h5>COOL IF</h5><h1 id="coolTarget" class="targetTemps">73&deg;F</h1><div class="buttonset inner centered hfill"><div class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
+								<li id="thermoLeft" class="hvacColumn floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">STATUS</h2><div class="modeholder"><h3 class="heatGradient leftAlign">heat mode</h3></div><div id="jclock2" class="clock"></div></li>
+								<li class="hvacColumn floatLeft hfill"><h5>Zone 1</h5><h1 id="heatTarget" class="targetTemps"><span id="z1Temp">68</span>&deg;F</h1><div class="buttonset inner centered hfill"><div id="z1u" class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div id="z1d" class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
+								<li class="hvacColumn floatLeft hfill"><h5>Zone 2</h5><h1 id="coolTarget" class="targetTemps"><span id="z2Temp">68</span>&deg;F</h1><div class="buttonset inner centered hfill"><div id="z2u" class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div id="z2d" class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
 								<li class="hvacColumn floatLeft"><h4 class="statusHeader">Additional Details</h4><h4 class="statusText">41% humidity indoors<br />75% humidity outdoors</h4><h4 class="statusText">0.4% CO2 content indoors<br />0.6% CO2 content outdoors</h4></li>
 								<li class="hvacSpacer notext floatLeft">ReHome Hvac Controls</li>
 							</ul>
@@ -259,35 +240,35 @@
 							</div>
 							<div class="threeColumnMiddle">
 								<div class="header inner logo hfill">
-									<h2 id="portalLogo" class="noText button"><span>Re</span> Control</h2>
+									<h2 id="portalAltn" class="noText button"><span>Re</span> Control</h2>
 								</div>
 							</div>
 						</div>
 						<div class="middle">
-							<div id="hvacGraph" class="holder graphic inner hvacGraph">
-								<div id="thermLeftArrow" class="hfill floatLeft thermArrow">
+							<div id="sunGraph" class="holder hvacGraph">
+								<div id="sunLeftArrow" class="hfill floatLeft thermArrow sunArrow">
 									<div class="thermGraphicButton">&lang;</div>
 								</div>
-								<div id="thermRightArrow" class="hfill floatRight thermArrow">
+								<div id="sunRightArrow" class="hfill floatRight thermArrow sunArrow">
 									<div class="thermGraphicButton">&rang;</div>
 								</div>
 								
-								<div id="thermCenterGraphViewport" class="thermViewport">
-									<div id="thermCenterGraphLandscape" class="thermLandscape">
-										<div id="thermGraphic1" class="lightbox inner centered floatLeft">1</div>
-										<div id="thermGraphic2" class="lightbox inner floatLeft">2</div>
-										<div id="thermGraphic3" class="lightbox floatLeft">3</div>
-										<div id="thermGraphic4" class="lightbox floatLeft">4</div>
+								<div id="sunCenterGraphViewport" class="thermViewport">
+									<div id="sunCenterGraphLandscape" class="landscape thermLandscape">
+										<div id="sunGraphic1" class="lightbox inner centered floatLeft">1</div>
+										<div id="sunGraphic2" class="lightbox inner floatLeft">2</div>
+										<div id="sunGraphic3" class="lightbox floatLeft">3</div>
+										<div id="sunGraphic4" class="lightbox floatLeft">4</div>
 									</div>
 								</div>
 								<div class="indicators">
-									<div id="thermIndicator1" class="thermIndicator floatleft indicating"></div>
-									<div id="thermIndicator2" class="thermIndicator floatleft"></div>
-									<div id="thermIndicator3" class="thermIndicator floatleft"></div>
-									<div id="thermIndicator4" class="thermIndicator floatleft"></div>
+									<div id="sunIndicator1" class="thermIndicator sunIndicator floatleft indicating"></div>
+									<div id="sunIndicator2" class="thermIndicator sunIndicator floatleft"></div>
+									<div id="sunIndicator3" class="thermIndicator sunIndicator floatleft"></div>
+									<div id="sunIndicator4" class="thermIndicator sunIndicator floatleft"></div>
 								</div>		
 							</div>
-							<div id="bigTempGuage" class="hvac graphic inner floatLeft">
+							<div id="bigTempGuage" class="hvac floatLeft">
 								<div class="floatLeft noText guageBox guageBoxFirst s1">-40</div>
 								<div class="floatLeft noText guageBox s2">-10</div>
 								<div class="floatLeft noText guageBox s3">-3</div>
@@ -309,19 +290,16 @@
 								<div class="floatLeft noText guageBox s19">103</div>
 								<div class="floatLeft noText guageBox guageBoxLast s20">110</div>
 								<div id="insideIndicator"></div>
-								<div id="outsideIndicator"></div>
 							</div>
-							<div id="inside" class="floatLeft"><h1 id="insideTemp">72&deg;F</h1><h4>inside</h4></div>
-							<div id="outside" class="floatLeft"><h1 id="outsideTemp">68&deg;F</h1><h4>outside</h4></div>
+							<div id="solarDraw" class="floatLeft"><h1 id="outsideTemp" class="largeReading floatLeft">904</h1><h4 class="floatRight watts">watts</h4></div>
 						</div>
 						<div class="bottom">
-							<ul class="tempControls inner hfill">
-								<li class="hvacSpacer notext floatLeft">ReHome Hvac Controls</li>
-								<li id="thermoLeft" class="hvacColumn floatLeft"><h2 class="steelGradient statusWord leftAlign">STATUS</h2><div class="modeholder"><h3 class="heatGradient leftAlign">heat mode</h3></div><div id="jclock3" class="clock"></div></li>
-								<li class="hvacColumn floatLeft hfill"><h5>HEAT IF</h5><h1 id="heatTarget" class="targetTemps">68&deg;F</h1><div class="buttonset inner centered hfill"><div class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
-								<li class="hvacColumn floatLeft hfill"><h5>COOL IF</h5><h1 id="coolTarget" class="targetTemps">73&deg;F</h1><div class="buttonset inner centered hfill"><div class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
-								<li class="hvacColumn floatLeft"><h4 class="statusHeader">Additional Details</h4><h4 class="statusText">41% humidity indoors<br />75% humidity outdoors</h4><h4 class="statusText">0.4% CO2 content indoors<br />0.6% CO2 content outdoors</h4></li>
-								<li class="hvacSpacer notext floatLeft">ReHome Hvac Controls</li>
+							<ul class="hfill">
+								<li class="hvacSpacer notext floatLeft">Solar Status</li>
+								<li class="sunColumn floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">STATUS</h2><div class="modeholder sunmode"><h3 class="sunGradient leftAlign">generating surplus</h3></div><div id="jclock3" class="clock"></div></li>
+								<li class="sunColumn floatLeft"><h3 class="topBar">Power Generated</h3><h3 class="whiteText">Last Hour <span class="greenText">340 watt-hours</span></h3><h3 class="whiteText">Last day <span class="greenText">340 watt-hours</span></h3><h3 class="whiteText">Last week <span class="greenText">340 watt-hours</span></h3></h3></li>
+								<li class="sunColumn floatLeft"><h3 class="topBar">Power Consumed</h3><h3 class="whiteText">Last Hour <span class="yellowText">248 watt-hours</span></h3><h3 class="whiteText">Last day <span class="yellowText">902 watt-hours</span></h3><h3 class="whiteText">Last week <span class="yellowText">78291 watt-hours</span></h3></li>
+								<li class="hvacSpacer notext floatLeft">Solar Status</li>
 							</ul>
 						</div>			
 				</div>
@@ -336,32 +314,32 @@
 							</div>
 							<div class="threeColumnMiddle">
 								<div class="header inner logo hfill">
-									<h2 id="portalLogo" class="noText button"><span>Re</span> Control</h2>
+									<h2 id="portalAltn" class="noText button"><span>Re</span> Control</h2>
 								</div>
 							</div>
 						</div>
 						<div class="middle">
-							<div id="hvacGraph" class="holder hvacGraph">
-								<div id="thermLeftArrow" class="hfill floatLeft thermArrow">
+							<div id="waterGraph" class="holder hvacGraph">
+								<div id="waterLeftArrow" class="hfill floatLeft thermArrow waterArrow">
 									<div class="thermGraphicButton">&lang;</div>
 								</div>
-								<div id="thermRightArrow" class="hfill floatRight thermArrow">
+								<div id="waterRightArrow" class="hfill floatRight thermArrow waterArrow">
 									<div class="thermGraphicButton">&rang;</div>
 								</div>
 								
-								<div id="thermCenterGraphViewport" class="thermViewport">
-									<div id="thermCenterGraphLandscape" class="thermLandscape">
-										<div id="thermGraphic1" class="lightbox inner centered floatLeft">1</div>
-										<div id="thermGraphic2" class="lightbox inner floatLeft">2</div>
-										<div id="thermGraphic3" class="lightbox floatLeft">3</div>
-										<div id="thermGraphic4" class="lightbox floatLeft">4</div>
+								<div id="waterCenterGraphViewport" class="thermViewport">
+									<div id="waterCenterGraphLandscape" class="landscape thermLandscape">
+										<div id="waterGraphic1" class="lightbox inner centered floatLeft">1</div>
+										<div id="waterGraphic2" class="lightbox inner floatLeft">2</div>
+										<div id="waterGraphic3" class="lightbox floatLeft">3</div>
+										<div id="waterGraphic4" class="lightbox floatLeft">4</div>
 									</div>
 								</div>
 								<div class="indicators">
-									<div id="thermIndicator1" class="thermIndicator floatleft indicating"></div>
-									<div id="thermIndicator2" class="thermIndicator floatleft"></div>
-									<div id="thermIndicator3" class="thermIndicator floatleft"></div>
-									<div id="thermIndicator4" class="thermIndicator floatleft"></div>
+									<div id="waterIndicator1" class="thermIndicator waterIndicator floatleft indicating"></div>
+									<div id="waterIndicator2" class="thermIndicator waterIndicator floatleft"></div>
+									<div id="waterIndicator3" class="thermIndicator waterIndicator floatleft"></div>
+									<div id="waterIndicator4" class="thermIndicator waterIndicator floatleft"></div>
 								</div>		
 							</div>
 							<div id="bigTempGuage" class="floatLeft">
@@ -386,19 +364,17 @@
 								<div class="floatLeft noText guageBox w19">103</div>
 								<div class="floatLeft noText guageBox guageBoxLast w20">110</div>
 								<div id="insideIndicator"></div>
-								<div id="outsideIndicator"></div>
 							</div>
-							<div id="inside" class="floatLeft"><h1 id="insideTemp">72&deg;F</h1><h4>inside</h4></div>
-							<div id="outside" class="floatLeft"><h1 id="outsideTemp">68&deg;F</h1><h4>outside</h4></div>
+							<div id="waterDraw" class="floatLeft"><h1 id="outsideTemp" class="largeReading floatLeft">478</h1><h4 class="floatRight watts">gallons</h4></div>
 						</div>
 						<div class="bottom">
-							<ul class="tempControls inner hfill">
-								<li class="hvacSpacer notext floatLeft">ReHome Hvac Controls</li>
-								<li id="thermoLeft" class="hvacColumn floatLeft"><h2 class="steelGradient statusWord leftAlign">STATUS</h2><div class="modeholder"><h3 class="heatGradient leftAlign word">heating</h3><h3 class = "steelGradient andSign word"> & </h3><h3 class="ventGradient leftAlign word">venting</h3></div><div id="jclock3" class="clock"></div></li>
-								<li class="hvacColumn floatLeft hfill"><h5>HEAT IF</h5><h1 id="heatTarget" class="targetTemps">68&deg;F</h1><div class="buttonset inner centered hfill"><div class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
-								<li class="hvacColumn floatLeft hfill"><h5>COOL IF</h5><h1 id="coolTarget" class="targetTemps">73&deg;F</h1><div class="buttonset inner centered hfill"><div class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
-								<li class="hvacColumn floatLeft"><h4 class="statusHeader">Additional Details</h4><h4 class="statusText">41% humidity indoors<br />75% humidity outdoors</h4><h4 class="statusText">0.4% CO2 content indoors<br />0.6% CO2 content outdoors</h4></li>
-								<li class="hvacSpacer notext floatLeft">ReHome Hvac Controls</li>
+							<ul class="hfill">
+								<li class="hvacSpacer notext floatLeft">Water Status</li>
+								<li class="waterStatus floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">STATUS</h2><div class="waterMode"><h3 class="heatGradient leftAlign word">heating</h3><h3 class = "steelGradient andSign word"> & </h3><h3 class="ventGradient leftAlign word">venting</h3></div><div id="jclock3" class="clock"></div></li>
+								<li class="waterSwitch floatLeft hfill"><div id="waterSwitchVertical" class="vSwitch"></div><div id="waterSwitchHorizontal" class="hSwitch offSwitch"><h2 class="switchText">HEAT</h2></div></li>
+								<li class="waterColumn floatLeft"><h3 class="topBar waterBar">Water Usage Stats</h3><h3 class="whiteText">Use Today<span class="blueText"> 23 gallons</span></h3><h3 class="whiteText">Avg. Daily Usage<span class="blueText"> 39.5 gallons</span></h3><h3 class="whiteText">Water recycled<span class="blueText"> 19 gallons</span></h3></h3></li>
+								<li class="waterColumn floatLeft"><h3 class="topBar waterBar">Grey Water Stats</h3><h3 class="whiteText">Use Today<span class="blueText"> 2 gallons</span></h3><h3 class="whiteText">Water Left<span class="blueText"> 23 gallons</span></h3><h3 class="whiteText">Usage this week<span class="blueText"> 382 gallons</span></h3></li>
+								<li class="hvacSpacer notext floatLeft">Water Status</li>
 							</ul>
 						</div>
 				</div>
@@ -412,12 +388,19 @@
 						</div>
 						<div class="threeColumnMiddle">
 							<div class="header inner logo hfill">
-								<h2 id="portalLogo" class="noText button"><span>Re</span> Control</h2>
+								<h2 id="portalAltn" class="noText button"><span>Re</span> Control</h2>
 							</div>
 						</div>
 					</div>
-					<div class="house floatLeft"><img id="wholeHouse" src="images/none.png" class="hfill wfill floatLeft" style="display:inline;"></img><div id="holder"></div></div>
-					<div class="monitorInfo hfill floatRight">
+					<div class="house floatLeft">
+						<div id="holder"></div>
+						<ul class="catergorySelectors">
+							<li id="homeCategory" class="entireHouse category"></li>
+							<li id="lightingCategory" class="lights category"></li>
+							<li id="appliancesCategory" class="appliances category"></li>
+						</ul>
+					</div>
+					<div id="0021" class="monitorInfo hfill floatRight">
 						<div id="space"><h3>Entire House</h3></div>
 						<div id="usageStats">
 							<h3>Current power usage: <span id="currentUsage">34 watts</span></h3>
@@ -426,7 +409,7 @@
 							<h3>Estimated Cost: <span id="costUsage">$0.14/hr</span></h3>
 						</div>
 						<div class="spacer noText">spacer</div>
-						<div id="history" class="leftButton floatLeft glossy"><h3>History</h3></div>
+						<div id="history" class="leftButton floatLeft glossy selected"><h3>History</h3></div>
 						<div id="breakdown" class="centerbutton floatLeft glossy"><h3>Breakdown</h3></div>
 						<div id="barGraphs" class="centerButton floatLeft glossy"><h3>Bar Graphs</h3></div>
 						<div id="other" class="rightButton floatLeft glossy"><h3>other</h3></div>
@@ -434,25 +417,25 @@
 						<div class="spacer noText">spacer</div>
 						<div id="monitorGraph" class="holder graphic inner">
 							<div id="monitorCenterGraphViewport">
-								<div id="historyCenterGraphLandscape">
+								<div id="historyCenterGraphLandscape" class="landscape">
 									<div id="historyGraphic1" class="lightbox inner centered floatLeft">1</div>
 									<div id="historyGraphic2" class="lightbox inner floatLeft">2</div>
 									<div id="historyGraphic3" class="lightbox floatLeft">3</div>
 									<div id="historyGraphic4" class="lightbox floatLeft">4</div>
 								</div>
-								<div id="breakdownCenterGraphLandscape" class="inactive">
+								<div id="breakdownCenterGraphLandscape" class="landscape inactive">
 									<div id="breakdownGraphic1" class="lightbox inner centered floatLeft">1</div>
 									<div id="breakdownGraphic2" class="lightbox inner floatLeft">2</div>
 									<div id="breakdownGraphic3" class="lightbox floatLeft">3</div>
 									<div id="breakdownGraphic4" class="lightbox floatLeft">4</div>
 								</div>
-								<div id="barGraphCenterGraphLandscape" class="inactive">
+								<div id="barGraphCenterGraphLandscape" class="landscape inactive">
 									<div id="barGraphGraphic1" class="lightbox inner centered floatLeft">1</div>
 									<div id="barGraphGraphic2" class="lightbox inner floatLeft">2</div>
 									<div id="barGraphGraphic3" class="lightbox floatLeft">3</div>
 									<div id="barGraphGraphic4" class="lightbox floatLeft">4</div>
 								</div>
-								<div id="otherCenterGraphLandscape" class="inactive">
+								<div id="otherCenterGraphLandscape" class="landscape inactive">
 									<div id="otherGraphic1" class="lightbox inner centered floatLeft">1</div>
 									<div id="otherGraphic2" class="lightbox inner floatLeft">2</div>
 									<div id="otherGraphic3" class="lightbox floatLeft">3</div>
@@ -469,6 +452,27 @@
 							<div id="monitorGraphButtonRight" class="floatRight monitorArrow">&rang;</div>		
 						</div>
 					</div>
+						<div id="d0000" class="device off livingroom"></div>
+						<div id="d0001" class="device inUse livingroom"></div>
+						<div id="d0002" class="device inUse"></div>
+						<div id="d0003" class="device inUse livingroom light"></div>
+						<div id="d0004" class="device inUse livingroom light"></div>
+						<div id="d0005" class="device inUse"></div>
+						<div id="d0006" class="device inUse light"></div>
+						<div id="d0007" class="device off livingroom"></div>
+						<div id="d0008" class="device inUse light"></div>
+						<div id="d0009" class="device inUse hallway appliance"></div>
+						<div id="d0010" class="device inUse livingroom light"></div>
+						<div id="d0011" class="device off hallway appliance"></div>
+						<div id="d0012" class="device inUse"></div>
+						<div id="d0013" class="device inUse light"></div>
+						<div id="d0014" class="device off livingroom light"></div>
+						<div id="d0015" class="device inUse"></div>
+						<div id="d0016" class="device off kitchen light"></div>
+						<div id="d0017" class="device inUse livingroom"></div>
+						<div id="d0018" class="device off kitchen appliance"></div>
+						<div id="d0019" class="device off kitchen"></div>
+						<div id="d0020" class="device inUse kitchen appliance"></div>
 				</div>
 						
 		

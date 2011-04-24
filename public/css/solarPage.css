@@ -18,3 +18,18 @@
 .s18 { background: -webkit-gradient(linear, left top, right top, from(#387612), to(#216815)); }
 .s19 { background: -webkit-gradient(linear, left top, right top, from(#216815), to(#146017)); }
 .s20 { background: -webkit-gradient(linear, left top, right top, from(#146017), to(#135e16)); }
+
+.sunGradient { font-weight:bold; color: #ffda00; font-size:.8em; margin-top: 5px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.2))); }
+.sunColumn { width:274px; }
+.sunmode { width:240px; }
+.rightBorder { border-right: 1px solid #333; }
+.topBar { margin-bottom:5px; width:230px; font-size:.9em;text-align:left; color:#eee; border-radius:8px; padding-top:6px; padding-left:12px; padding-right:12px; padding-bottom:3px; background: -webkit-gradient(linear, center top, center bottom, from(#444), to(#111)); }
+.usageStats { padding-left:10px; font-size:0.8em;}
+.whiteText {color:#eee; font-style:bold; font-size:.8em; text-align:left; padding-left:10px;}
+.yellowText {color:#fff200; font-size:.8em; text-align:left; padding-left:10px;}
+.greenText {color:#39b54a; font-size:.8em; text-align:left; padding-left:10px;}
+.largeReading { color:#fff200; font-size:1.8em; margin-top:35px; margin-left:10px;}
+.watts { margin-top:40px; margin-left:10px; }
+#sunGraphic1, #sunGraphic2, #sunGraphic3, #sunGraphic4 {  height:380px; width:800px; }
+#sunLeftArrow { width:100px; }
+#sunRightArrow { width:100px; }

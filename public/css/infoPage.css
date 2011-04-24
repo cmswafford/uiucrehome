@@ -4,10 +4,10 @@
  */
 #infoMain{ background: url(../images/infoMain.png) no-repeat top; border-bottom:4px solid red; height:683px; width:100%; }
 #infoBottom{ width:100%; background-color: blue; }
-#infoContent{ height:523px; }
+#infoContent{ height:573px; }
 #borderDetail { width:300px; height:4px; position:relative; background-color:rgba(255,255,255,0.5); float:right}
 
-.infoPane { height:455px; width:280px; text-align:left; margin-right:20px; background-color:rgba(0,0,0,0.8); padding:20px 15px 30px 15px; }
+.infoPane { height:503px; width:280px; text-align:left; margin-right:20px; background-color:rgba(0,0,0,0.8); padding:20px 15px 30px 15px; }
 
 #planningPane { color:#ddd; font-size:medium; line-height: 1.4em; }
 #planningPane>h4 { color:#00d4e7; border-bottom: 1px solid #333; font-size:1.2em; padding-bottom: 15px; font-style:bold; }

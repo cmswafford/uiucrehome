@@ -13,4 +13,11 @@ $(document).ready(function() {
  // setCharts(cd);
 	setThermCharts();
 	sethistoryCharts();
+	setSunCharts();
+	setWaterCharts();
+	setTimeout(function() {
+		$('#bod').removeClass('startUp');
+		$('#landscape').removeClass('inactive');
+	}, 4000);
+  
 });

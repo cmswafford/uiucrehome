@@ -1,10 +1,18 @@
 /**
  * Landscape orientation specific styles
  */
+@font-face {
+	font-family: 'Myriad Pro';
+	src: local('☺'), url('../include/GillSansMTPro-Book.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+	
+.startUp { background-image: url(../images/startup.png); width:100%; height:100%; background-position:center; }
+
 .fullpage {
 	box-sizing: border-box;
 	margin: 0 auto;
-	margin-top: 20px;
 	width: 1024px;
 	height: 768px;
 	text-align: center;

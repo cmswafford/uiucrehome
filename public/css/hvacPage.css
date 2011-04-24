@@ -69,11 +69,10 @@
 
 li>h6 { text-align:left; margin-left:10px; line-height:18px; font-size:15px;}
 .statusHeader { color:#777; }
-.statusWord { font-size: 1.1em;}
-#thermoLeft { text-align:left; }
-#thermoLeft>h2 { solid #666; padding-bottom:5px;}
+.statusWord { font-size: 1.1em; }
+.thermoLeft>h2 { solid #666; padding-bottom:5px;}
 .modeholder { border-top: 1px solid #333; border-bottom: 1px solid #333; width:170px; padding-bottom:2px;}
-#thermoLeft>h3 { padding-top:4px; padding-bottom:4px; }
+.thermoLeft>h3 { padding-top:4px; padding-bottom:4px; }
 
 .hvacColumn { width:206px; }
 .hvacSpacer { width:100px; }
@@ -94,4 +93,5 @@ li>h6 { text-align:left; margin-left:10px; line-height:18px; font-size:15px;}
 .thermLandscape { width:4800px; height:380px; margin-left:0px; }
 #thermGraphic1, #thermGraphic2, #thermGraphic3, #thermGraphic4 {  height:380px; width:800px; }
 .thermGraphicButton { font-size:1.5em; height:330px; line-height:330px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000;  }
-.clock { margin-top: 7px;}
+.clock { margin-top: 7px; }
+.leftAlign { text-align:left; }

@@ -1,6 +1,6 @@
 .house { height:658px; width:510px; z-index:10;}
 .monitorTop { height:110px !important;}
-#holder { margin:0 auto; margin-top:-90px;}
+#holder { margin:0 auto; margin-top:-85px;}
 .monitorInfo { width:480; height:628px; margin-bottom:15px; margin-top:15px; padding: 0px 15px 0px 15px; border-left:1px solid #333; text-align:left; }
 #space { color:#eee; background-color:red; border-radius:8px; padding-top:6px; padding-left:12px; padding-right:12px; padding-bottom:3px; background: -webkit-gradient(linear, center top, center bottom, from(#555), to(#222)); }
 #usageStats>h3 { padding-top:20px; padding-left:10px; font-size:0.8em; }
@@ -11,6 +11,7 @@
 .centerbutton { border:1px solid #555; background-color:#333; font-size:0.5em; text-align:center; padding:8px 10px 5px 10px; }
 .rightButton { border:1px solid #555; background-color:#333; border-top-right-radius: 20px; border-bottom-right-radius:20px;font-size:0.5em; text-align:center; padding:8px 15px 5px 10px; }
 .glossy { background: -webkit-gradient(linear, center top, center bottom, from(#434343), color-stop(0.50,rgba(67,67,67,1)), color-stop(0.55,rgba(46,46,46,1)), to(#2e2e2e)); }
+.selected { background: -webkit-gradient(linear, center top, center bottom, from(#1d90c6), color-stop(0.50,rgba(29,144,198,1)), color-stop(0.55,rgba(2,130,191,1)), to(#0282bf)); }
 .glossy:hover { background: -webkit-gradient(linear, center top, center bottom, from(#1d90c6), color-stop(0.50,rgba(29,144,198,1)), color-stop(0.55,rgba(2,130,191,1)), to(#0282bf)); }
 #monitorCenterGraphViewport { width:480px; overflow:hidden; height:310px; }
 #historyCenterGraphLandscape { width:1920px; height:310px; }
@@ -18,3 +19,38 @@
 #monitorGraphButtonLeft { width:100px; height:30px; text-size:0.5em; margin-top:-30px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000; }
 #monitorGraphButtonRight { width:100px; height:30px; text-size:0.5em; margin-top:-30px; text-align:right; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000; }
 .monitorIndicator { width:9px; height:9px; border-radius:9px; background-color:#444; margin:6px; }
+
+.catergorySelectors { position:relative; top:-85px; left: 45px; height:70px; width:200px; }
+.category { float:left; background-image: url(../images/categories.png); background-repeat: no-repeat; height:40px; width:40px; margin:10px;}
+.lights {background-position-x:center;}
+.appliances{background-position-x:right;}
+
+.category:click { background-position-y:bottom;}
+.category:hover { background-position-y:bottom;}
+.device { border-radius:35px; width:35px; height:35px; position:absolute;}
+.inUse { -webkit-box-shadow:0 0 5px #111; background:-webkit-gradient(linear, left top, right bottom, from(rgba(0,255,0,1)), to(rgba(0,0,0,0.4)));}
+.inUse:hover { border:solid 1px #000; -webkit-box-shadow:0 0 15px #eee; }
+.off { -webkit-box-shadow:0 0 5px #111; background:-webkit-gradient(linear, left top, right bottom, from(rgba(90,90,90,1)), to(rgba(0,0,0,0.4)));}
+.deviceSelected { -webkit-box-shadow:0 0 15px #eee; }
+#d0000 { top:22px; 	left:38px; }
+#d0001 { top:252px; left:38px; }
+#d0002 { top:537px; left:433px; }
+#d0003 { top:232px; left:128px; }
+#d0004 { top:282px; left:128px; }
+#d0005 { top:435px; left:38px; }
+#d0006 { top:423px; left:408px; }
+#d0007 { top:212px; left:38px; }
+#d0008 { top:497px; left:130px; }
+#d0009 { top:377px; left:330px; }
+#d0010 { top:182px; left:128px; }
+#d0011 { top:422px; left:330px; }
+#d0012 { top:562px; left:218px; }
+#d0013 { top:607px; left:358px; }
+#d0014 { top:62px; left:128px; }
+#d0015 { top:682px; left:433px; }
+#d0016 { top:232px; left:373px; }
+#d0017 { top:377px; left:218px; }
+#d0018 { top:318px; left:433px; }
+#d0019 { top:318px; left:338px; }
+#d0020 { top:142px; left:433px; }
+
