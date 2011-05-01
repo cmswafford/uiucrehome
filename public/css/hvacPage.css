@@ -6,6 +6,8 @@
 .guageBox { width:27px; height:45px; margin:2px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.6)), color-stop(0.2,rgba(0,0,0,1)),color-stop(0.5,rgba(0,0,0,1)), color-stop(0.8,rgba(0,0,0,1)), to(rgba(0,0,0,0.6))); margin-top: 33px;}
 .guageBoxLast { -webkit-border-top-right-radius: 7px; -webkit-border-bottom-right-radius: 7px; }
 .guageBoxFirst { -webkit-border-top-left-radius: 7px; -webkit-border-bottom-left-radius: 7px; margin-left:100px; }
+
+// Styles For the guage widget
 .t1  { background: -webkit-gradient(linear, left top, right top, from(#011ebe), to(#0b28d2)); }
 .t2  { background: -webkit-gradient(linear, left top, right top, from(#0b28d2), to(#1e32c1)); }
 .t3  { background: -webkit-gradient(linear, left top, right top, from(#1e32c1), to(#323daf)); }

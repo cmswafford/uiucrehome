@@ -23,18 +23,19 @@
 		<link rel="stylesheet" href="css/date.css" />
 		<link rel="stylesheet" href="css/3column.css" />
 		<link rel="stylesheet" media="all and (orientation:portrait)" href="css/portrait.css" />
-		<link rel="stylesheet" media="all and (orientation:landscape)" href="css/landscape.css" /> 
-		<link rel="stylesheet" href="css/landscape.css" /> <!-- for desktop styling take out later -->
+		<link rel="stylesheet" href="css/landscape.css" />
 
 		
 		<!-- Includes -->
-		<script type="text/javascript" src="include/raphael.js"></script>
-		<script type="text/javascript" src="include/jquery-1.4.2.min.js"> </script>	
-		<script type="text/javascript" src="include/highcharts.js"> </script>
-		<script type="text/javascript" src="include/cufon.js"> </script>
-		<script type="text/javascript" src="include/Helvetica_Neue_Time_400.font.js"> </script>	
-		<script type="text/javascript" src="include/Helvetica_Neue_CN_400-Helvetica_Neue_CN_700-Helvetica_Neue_CN_italic_400-Helvetica_Neue_CN_italic_700.font.js"> </script>	
-		<script type="text/javascript" src="include/Thin_300.font.js"> </script>	
+		<script type="text/javascript" src="include/raphael.js"></script> <!-- This is the svg framework used for the floorplan layout see http://raphaeljs.com/ -->
+		<script type="text/javascript" src="include/jquery-1.4.2.min.js"></script>	<!-- Jquery 1.4 is used for ajax and dynamic page updates see http://jquery.com/ -->
+		<script type="text/javascript" src="include/highcharts.js"></script> <!-- Javascript framework for most of the charts see http://www.highcharts.com/ -->
+		<script type="text/javascript" src="include/cufon.js"></script> <!-- Font replacement tool just eye candy basically see http://cufon.shoqolate.com/generate/ -->
+		
+		<!-- Fonts to be used by Cufon for substitution -->
+		<script type="text/javascript" src="include/Helvetica_Neue_Time_400.font.js"></script>	
+		<script type="text/javascript" src="include/Helvetica_Neue_CN_400-Helvetica_Neue_CN_700-Helvetica_Neue_CN_italic_400-Helvetica_Neue_CN_italic_700.font.js"></script>	
+		<script type="text/javascript" src="include/Thin_300.font.js"></script>	
 		
 		<title>Re_Home</title>
 		
@@ -42,8 +43,7 @@
 	
 	<body id="bod" class="startUp">
 		
-<!-- **************************************************** End header.html ******** Begin Index.html **************************************************************** -->
-		<div id="viewport" class="viewport portalView" style="position: absolute;">
+		<div id="viewport" class="viewport portalView">
 			
 			<div id="landscape" class="landscape portalLandscape inactive">
 			
@@ -452,6 +452,8 @@
 							<div id="monitorGraphButtonRight" class="floatRight monitorArrow">&rang;</div>		
 						</div>
 					</div>
+						<!-- These are the devices in the house, all of these are circular divs positioned absolutely -->
+						<!-- They can be repositioned by atering monitor.css -->
 						<div id="d0000" class="device off livingroom"></div>
 						<div id="d0001" class="device inUse livingroom"></div>
 						<div id="d0002" class="device inUse"></div>
@@ -474,23 +476,26 @@
 						<div id="d0019" class="device off kitchen"></div>
 						<div id="d0020" class="device inUse kitchen appliance"></div>
 				</div>
-						
-		
+				
+				<!-- This div will be used to display notifications it is initially inactive and will display messages in h3 tags when necessary -->		
+				<div id="notify" class="notify">
+					<div id="notifyButton" class="notifyButton"></div>
+					<div class="alert floatLeft"></div><h2>Front Door is open</h2><div class="alert floatLeft"></div><h2>Back Door is open</h2><div class="alert floatLeft"></div><h2>Side Door is open</h2>
+				</div>
 			</div><!-- end viewport -->
 			
 		</div><!-- end landscape -->
-<!-- *********************************************** End Index.html **** Begin footer.html*********************************************************************************** -->
 		
 	</body>
 	
-<!-- -------------------------------------------------------JAVASCRIPT APPLICATION LOGIC INCLUDES------------------------------------------------------------------------------->	
+<!---------------------------------------------------------JAVASCRIPT APPLICATION LOGIC INCLUDES------------------------------------------------------------------------------->	
 	
 	<script type="text/javascript" src="js/jquery.jclock.js_4.js"></script> <!-- taken from http://mobile.tutsplus.com/tutorials/iphone/iphone-web-app-meta-tags/ -->
-	<script type="text/javascript" src="js/floorplan.js"></script>
-	<script type="text/javascript" src="js/portalGraphs.js"></script>
-	<script type="text/javascript" src ="js/view.js"></script>
-	<script type="text/javascript" src ="js/controller.js"></script>
+	<script type="text/javascript" src="js/floorplan.js"></script> <!-- The floorplan widget for the monitoring page -->
+	<script type="text/javascript" src="js/portalGraphs.js"></script> <!-- Configuration for all of the graphs -->
+	<script type="text/javascript" src ="js/view.js"></script> <!-- Logic for updating the page -->
+	<script type="text/javascript" src ="js/controller.js"></script> <!-- Logic for controlling the gui -->
 	
-<!-- -------------------------------------------------------END JAVASCRIPT APPLICATION LOGIC INCLUDES---------------------------------------------------------------------------->
+<!---------------------------------------------------------END JAVASCRIPT APPLICATION LOGIC INCLUDES---------------------------------------------------------------------------->
 	
 </html>

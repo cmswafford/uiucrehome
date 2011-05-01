@@ -304,4 +304,14 @@ var bindMonitorSelectorButtons = function() {
 };
 bindMonitorSelectorButtons();
 
+var bindNotifyButton = function() {
+	$("#notifyButton").bind("click", handler = function(e) {
+		$('#notify').addClass('inactive');
+	});
+	$("#portalLogo").bind("click", handler = function(e) {
+		$('#notify').removeClass('inactive');
+	});
+};
+bindNotifyButton();
+
 // perhaps a touch gesture listener which allows for pageflipping through the subpages
