@@ -171,20 +171,16 @@ var bindGraphButtons = function() {
 			$('#'+indicator).addClass('indicating');
 		}
 		if(this.id == "leftArrow") {
-			if(leftMargin >= 0) return;
-			else {
-				leftMargin += 800;
-				setIndicator(leftMargin);
-				$("#centerGraphLandscape").stop().css('margin-left', leftMargin);
-			}
+			if(leftMargin >= 0) leftMargin = -3200;
+			leftMargin += 800;
+			setIndicator(leftMargin);
+			$("#centerGraphLandscape").stop().css('margin-left', leftMargin);
 		}
 		else {
-			if(leftMargin <= -2400) return;
-			else {
-				leftMargin -= 800;
-				setIndicator(leftMargin);
-				$("#centerGraphLandscape").stop().css('margin-left', leftMargin);
-			}
+			if(leftMargin <= -2400) leftMargin = 800;
+			leftMargin -= 800;
+			setIndicator(leftMargin);
+			$("#centerGraphLandscape").stop().css('margin-left', leftMargin);
 		}
 	});
 };
@@ -207,20 +203,16 @@ var bindThermGraphButtons = function() {
 			$('#'+indicator).addClass('indicating');
 		}
 		if(this.id == "thermLeftArrow") {
-			if(leftMargin >= 0) return;
-			else {
-				leftMargin += 800;
-				setIndicator(leftMargin);
-				$("#thermCenterGraphLandscape").stop().css('margin-left', leftMargin);
-			}
+			if(leftMargin >= 0) leftMargin = -3200;
+			leftMargin += 800;
+			setIndicator(leftMargin);
+			$("#thermCenterGraphLandscape").stop().css('margin-left', leftMargin);
 		}
 		else {
-			if(leftMargin <= -2400) return;
-			else {
-				leftMargin -= 800;
-				setIndicator(leftMargin);
-				$("#thermCenterGraphLandscape").stop().css('margin-left', leftMargin);
-			}
+			if(leftMargin <= -2400) leftMargin = 800;
+			leftMargin -= 800;
+			setIndicator(leftMargin);
+			$("#thermCenterGraphLandscape").stop().css('margin-left', leftMargin);
 		}
 	});
 };
@@ -243,20 +235,16 @@ var bindSunGraphButtons = function() {
 			$('#'+indicator).addClass('indicating');
 		}
 		if(this.id == "sunLeftArrow") {
-			if(leftMargin >= 0) return;
-			else {
-				leftMargin += 800;
-				setIndicator(leftMargin);
-				$("#sunCenterGraphLandscape").stop().css('margin-left', leftMargin);
-			}
+			if(leftMargin >= 0) leftMargin = -3200;
+			leftMargin += 800;
+			setIndicator(leftMargin);
+			$("#sunCenterGraphLandscape").stop().css('margin-left', leftMargin);
 		}
 		else {
-			if(leftMargin <= -2400) return;
-			else {
-				leftMargin -= 800;
-				setIndicator(leftMargin);
-				$("#sunCenterGraphLandscape").stop().css('margin-left', leftMargin);
-			}
+			if(leftMargin <= -2400) leftMargin = 800;
+			leftMargin -= 800;
+			setIndicator(leftMargin);
+			$("#sunCenterGraphLandscape").stop().css('margin-left', leftMargin);
 		}
 	});
 };
@@ -279,20 +267,16 @@ var bindWaterGraphButtons = function() {
 			$('#'+indicator).addClass('indicating');
 		}
 		if(this.id == "waterLeftArrow") {
-			if(leftMargin >= 0) return;
-			else {
-				leftMargin += 800;
-				setIndicator(leftMargin);
-				$("#waterCenterGraphLandscape").stop().css('margin-left', leftMargin);
-			}
+			if(leftMargin >= 0) leftMargin = -3200;
+			leftMargin += 800;
+			setIndicator(leftMargin);
+			$("#waterCenterGraphLandscape").stop().css('margin-left', leftMargin);
 		}
 		else {
-			if(leftMargin <= -2400) return;
-			else {
-				leftMargin -= 800;
-				setIndicator(leftMargin);
-				$("#waterCenterGraphLandscape").stop().css('margin-left', leftMargin);
-			}
+			if(leftMargin <= -2400) leftMargin = 800;
+			leftMargin -= 800;
+			setIndicator(leftMargin);
+			$("#waterCenterGraphLandscape").stop().css('margin-left', leftMargin);
 		}
 	});
 };
@@ -316,20 +300,18 @@ var bindHistoryGraphButtons = function() {
 			$('#'+indicator).addClass('indicating');
 		}
 		if(this.id == "monitorGraphButtonLeft") {
-			if(leftMargin >= 0) return;
-			else {
-				leftMargin += 480;
-				setIndicator(leftMargin);
-				$("#historyCenterGraphLandscape").stop().css('margin-left', leftMargin);
-			}
+			if(leftMargin >= 0) leftMargin = -1920;
+			
+			leftMargin += 480;
+			setIndicator(leftMargin);
+			$("#historyCenterGraphLandscape").stop().css('margin-left', leftMargin);
 		}
 		else {
-			if(leftMargin <= -1440) return;
-			else {
-				leftMargin -= 480;
-				setIndicator(leftMargin);
-				$("#historyCenterGraphLandscape").stop().css('margin-left', leftMargin);
-			}
+			if(leftMargin <= -1440) leftMargin = 480;
+			
+			leftMargin -= 480;
+			setIndicator(leftMargin);
+			$("#historyCenterGraphLandscape").stop().css('margin-left', leftMargin);
 		}
 	});
 };
@@ -340,6 +322,34 @@ var bindMonitorSelectorButtons = function() {
 		$('.glossy').removeClass('selected');
 		$('#'+this.id).addClass('selected');
 		//do something else
+		switch (this.id) {
+			case 'history': 
+				if(selectedType != this.id) {
+					selectedType = this.id;
+					sethistoryCharts();
+				}
+			break;
+			case 'breakdown':
+				if(selectedType != this.id) {
+					selectedType = this.id;
+					setBreakdownCharts();
+				}
+			break;
+			case 'barGraphs':
+				if(selectedType != this.id) {
+					selectedType = this.id;
+					setBarCharts();
+				}
+			break;
+			case 'other': 
+				if(selectedType != this.id) {
+					selectedType = this.id;
+					setOtherCharts();
+				}
+			break;
+			default:
+			break;
+		}
 	});
 };
 bindMonitorSelectorButtons();

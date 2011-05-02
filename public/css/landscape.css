@@ -68,7 +68,7 @@
 	position:relative;
 }
 
-
+/* Notification widget Styles */
 .notify {
 	width: 270px;
 	line-height: 25px;
@@ -80,9 +80,9 @@
 	padding-bottom: 5px;
 	padding-left:5px;
 	//border: 2px solid #eee;
-	//-webkit-box-shadow: 0 0 15px #ccc;
+	-webkit-box-shadow: 3px 3px 7px #000;
 	font-size: 16px;
-	background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.8)), to(rgba(0,0,0,0.4)));
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.9)), to(rgba(0,0,0,0.6)));
 	-webkit-border-radius: 10px;
 }
 
@@ -96,6 +96,7 @@
 	border-radius:20px;
 	background-color:black;
 	border: 2px solid #eee;
+	-webkit-box-shadow: 0 0 7px #000;
 	color:#aaa;
 	text-align:center;
 	line-height:20px;
