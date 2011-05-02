@@ -51,7 +51,11 @@
 				<div id="portal" class="fullpage">
 					<div class="top portalTop">
 						<div class="threeColumnLeft">
-							<div id="efficiencyGraphic" class="wfill hfill noText"><h2><span></span>Energy Info</h2></div>
+							<div id="efficiencyGraphic" class="wfill hfill">
+								<div class="spacer floatLeft noText">Spaceer</div>
+								<div id="headTempIn" class="headTempLeft headTemp floatLeft"><h4>Indoor</h4><h3 class="infoTemp">temp</h3><h1 id="intemp" class="intemp">68&deg;F</h1><h3 class="infoTemp">humidity</h3><h1 id="inHum" class="inHum">41%</h1></div>
+								<div id="headTempOut" class="headTempRight headTemp floatLeft"><h4>Outdoor</h4><h3 class="infoTemp">temp</h3><h1 id="outtemp" class="outtemp">78&deg;F</h1><h3 class="infoTemp">humidity</h3><h1 id="outHum" class="outHum">32%</h1></div>
+							</div>
 						</div>
 						<div class="threeColumnRight">
 							<div id="tempGraphic" class="wfill hfill noText"><h2><span></span>Temp Info</h2></div>
@@ -403,6 +407,7 @@
 					<div id="0021" class="monitorInfo hfill floatRight">
 						<div id="space"><h3>Entire House</h3></div>
 						<div id="usageStats">
+							<div id="lightSwitch" class="lightSwitch inactive"><div id="lightSwitchVertical" class="vLightSwitch"></div><div id="lightSwitchHorizontal" class="hLightSwitch offSwitch"><h2 class="lightSwitchText">OFF</h2></div></div>
 							<h3>Current power usage: <span id="currentUsage">34 watts</span></h3>
 							<h3>Total usage today: <span id="todayUsage">345 kwh</span></h3>
 							<h3>Total usage this week: <span id="weekUsage">1397 kwh</span></h3>

@@ -32,9 +32,10 @@
 #graphic1, #graphic2, #graphic3, #graphic4, #graphic5, #graphic6 {  height:400px; width:800px; }
 
 .graphicButton { font-size:1.5em; height:480px; line-height:480px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000;  }
-
-#efficiencyGraphic {background-image: url(../images/temp.png); background-position: center; background-position-y:35px; background-repeat: no-repeat;}
-//#efficiencyGraphic {background-image: url(../images/efficiency.png); background-position: center; background-position-y:35px; background-repeat: no-repeat;}
+.headTemp { padding:10px; width: 90px; margin:20px; margin-top:20px; color:#eee; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.8)), to(rgba(0,0,0,0.4))); -webkit-border-radius: 10px;}
+.headTemp h1 { font-size:25px;}
+.infoTemp { font-size:15px; padding-bottom:0px; color:#FFF000;}
+#efficiencyGraphic { font-size:20px; padding-left:30px; }
 .portalButton { background-repeat:none; background-image:url(../images/portalButtons.png); }
 .infoLink { background-position-x:0px; }
 .waterLink { background-position-x:180px; }

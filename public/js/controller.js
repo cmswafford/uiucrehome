@@ -68,18 +68,21 @@ var bindCategoryButtons = function() {
 		if (requestedID == 'homeCategory') {
 			$('#space').html("<h3>Entire House</h3>");
 			$('.device').addClass('deviceSelected');
+			$('.lightSwitch').addClass('inactive');
 			Cufon.replace('h3', {fontFamily: 'Thin'});
 			//etc
 		}
 		else if (requestedID == 'lightingCategory') {
 			$('#space').html("<h3>All Lights</h3>");
 			$('.light').addClass('deviceSelected');
+			$('.lightSwitch').addClass('inactive');
 			Cufon.replace('h3', {fontFamily: 'Thin'});
 			//etc
 		}
 		else if (requestedID == 'appliancesCategory') {
 			$('#space').html("<h3>All Appliances</h3>");
 			$('.appliance').addClass('deviceSelected');
+			$('.lightSwitch').addClass('inactive');
 			Cufon.replace('h3', {fontFamily: 'Thin'});
 			//etc
 		}
@@ -93,12 +96,30 @@ var bindDeviceButtons = function() {
 		$('.device').removeClass('deviceSelected');
 		Cufon.replace('h3', {fontFamily: 'Thin'});
 		$('#'+this.id).addClass('deviceSelected');
+		if ($('#'+this.id).hasClass('light')) {
+			if($('#'+this.id).hasClass('inUse')){
+				$('#lightSwitchHorizontal').removeClass('offSwitch');
+				$('#lightSwitchHorizontal').addClass('onSwitch');
+				$('.lightSwitchText').html('ON');
+				Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
+			}
+			if($('#'+this.id).hasClass('off')){
+				$('#lightSwitchHorizontal').addClass('offSwitch');
+				$('#lightSwitchHorizontal').removeClass('onSwitch');
+				$('.lightSwitchText').html('OFF');
+				Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
+			}
+			$('.lightSwitch').removeClass('inactive');
+		}
+		else {
+			$('.lightSwitch').addClass('inactive');
+		}
 		//etc
 	});
 };
 bindDeviceButtons();
 
-var bindHeatSwitch = function() {
+var bindSwitches = function() {
 	$(".hSwitch").bind("click", function(e) {
 		if($('#waterSwitchHorizontal').hasClass('offSwitch')){
 			$("#waterSwitchHorizontal").stop().animate({'bottom': '105px', 'background': '-webkit-gradient(linear, left top, left bottom, from(#ff3750), color-stop(0.40,rgba(233,20,20,1)), color-stop(0.45,rgba(200,20,20,1)), to(#5f000c))'}, 80, function() {
@@ -111,8 +132,27 @@ var bindHeatSwitch = function() {
 			});
 		}
 	});
+	$(".hLightSwitch").bind("click", function(e) {
+		if($('#lightSwitchHorizontal').hasClass('offSwitch')){
+			$("#lightSwitchHorizontal").stop().addClass('onSwitch');
+			$('#lightSwitchHorizontal').removeClass("offSwitch"); 
+			$('.lightSwitchText').html('ON');
+			Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
+			$('.deviceSelected').removeClass('off');
+			$('.deviceSelected').addClass('inUse');
+		
+		}
+		else {
+			$("#lightSwitchHorizontal").stop().addClass('offSwitch');
+			$('#lightSwitchHorizontal').removeClass("onSwitch"); 
+			$('.lightSwitchText').html('OFF');
+			Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
+			$('.deviceSelected').addClass('off');
+			$('.deviceSelected').removeClass('inUse');
+		}
+	});
 };
-bindHeatSwitch();
+bindSwitches();
 
 var bindGraphButtons = function() {
 	$(".arrow").bind("click", handler = function(e) {
@@ -313,5 +353,6 @@ var bindNotifyButton = function() {
 	});
 };
 bindNotifyButton();
+
 
 // perhaps a touch gesture listener which allows for pageflipping through the subpages

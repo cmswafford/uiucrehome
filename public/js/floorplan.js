@@ -40,6 +40,8 @@ function drawFloorPlan() {
 	rooms.click(function (event) {
 	    document.getElementById("space").innerHTML = "<h3>"+this.key+"</h3>";
 		Cufon.replace('h3', { fontFamily: 'Thin' }); // Font Replacement: update the replacement at every refresh
+		$('.device').removeClass('deviceSelected');
+		$('.lightSwitch').addClass('inactive');
 	});
 	
 	this.paper2 = new Raphael(document.getElementById("infoIcon"), 30, 30);
