@@ -176,7 +176,7 @@ var setOtherCharts = function() {
 	         }
 	      }, { // Secondary yAxis
 	         title: {
-	            text: 'Rainfall',
+	            text: 'Energy Usage',
 	            style: {
 	               color: '#4572A7'
 	            }
