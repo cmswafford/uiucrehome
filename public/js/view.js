@@ -37,4 +37,11 @@ $(document).ready(function() {
 		$('#landscape').removeClass('inactive');
 	}, 4000);
   
+  	var myScroll;
+	function loaded() {
+	setTimeout(function () {
+			myScroll = new iScroll('wrapper', {hScrollbar:false});
+		}, 100);
+	}
+	window.addEventListener('load', loaded, false);
 });

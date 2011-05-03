@@ -136,6 +136,7 @@ text { font-family: "Myriad Pro" !important; }
 /* Notification widget Styles */
 .notify {
 	width: 270px;
+	max-height:100px;
 	line-height: 25px;
 	position: absolute;
 	right: 20px;
@@ -152,6 +153,8 @@ text { font-family: "Myriad Pro" !important; }
 }
 
 .notify h2 { padding: 4px;}
+
+#wrapper { max-height: 104px; overflow: hidden;}
 
 .notifyButton {
 	width:20px;
