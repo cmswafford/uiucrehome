@@ -1,5 +1,8 @@
-/*
- * Thermostat Page specific styles
+/**
+ * Styling for the HVAC Subpage
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
  */
 #bigTempGuage { height:110px; width:718px; }
 .hvacGraph { height:400px; width:100%; }
@@ -84,7 +87,7 @@ li>h6 { text-align:left; margin-left:10px; line-height:18px; font-size:15px;}
 #outside>h1 { margin-top:20px; font-size:1.4em; padding:7px; color:#eee; }
 #inside>h4 { font-size:0.9em; font-style:italic; }
 #outside>h4 { font-size:0.9em; font-style:italic;}
-#insideIndicator { width:27px; height:47px; margin-left:533px; position:relative; top:2px; background: url(../images/insideIndicator.png); }
+#insideIndicator { width:27px; height:47px; margin-left:534px; position:relative; top:2px; background: url(../images/insideIndicator.png); }
 #outsideIndicator { width:27px; height:47px; margin-left:472px; position:relative; top:15px; background: url(../images/outsideIndicator.png); }
 .thermIndicator { width:9px; height:9px; border-radius:9px; background-color:#444; margin:6px; }
 #thermLeftArrow { width:100px; }

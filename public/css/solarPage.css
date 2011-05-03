@@ -1,3 +1,10 @@
+/**
+ * Styling for the Solar Power Monitoring Subpage
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
+ */
+
 .s1  { background: -webkit-gradient(linear, left top, right top, from(#360209), to(#400d0a)); }
 .s2  { background: -webkit-gradient(linear, left top, right top, from(#400d0a), to(#4c1c09)); }
 .s3  { background: -webkit-gradient(linear, left top, right top, from(#4c1c09), to(#5c2f08)); }

@@ -1,18 +1,28 @@
 /**
+ * This script sets up all the events for all clickable elements
+ * in the application except for the floorplan widget which is handled in 
+ * floorplan.js 
+ * 
  * @author Daniel Mestas <dan5446@gmail.com>
  * @netid mestas1
- * @date 
+ * @date Spring 2011
  */
 
 /**
- * Prevent default horizontal scrolling behavior of the ipad  
+ * Prevent default horizontal scrolling behavior of the iPad 
+ * please leave this one alone, it makes the iPad behave correctly 
+ * in webapp mode  
  */
 document.body.addEventListener('touchmove', function(e) {
 	  // This prevents native scrolling from happening.
 	  e.preventDefault();
 }, false);
 
-// Portal Page link handler
+/**
+ * Portal Page link handler
+ * This controller simply routes the user to the correct page 
+ * or back to the home page.
+ */
 var bindNavigationButtons = function() {
 	$(".button").bind("click", function(e) {
 		var requestedID = this.id;
@@ -30,6 +40,10 @@ var bindNavigationButtons = function() {
 };
 bindNavigationButtons();
 
+/**
+ * This controller sets the view when the temperature widgets on the hvac page are set
+ * Add logic to send the message to the server in order to control the device.
+ */
 var bindHvacButtons = function() {
 	$(".thermoButton").bind("mousedown", function(e) {
 		var id = this.id;	
@@ -61,6 +75,12 @@ var bindHvacButtons = function() {
 };
 bindHvacButtons();
 
+/**
+ * This controller sets the interactions for the category selectors
+ * on the energy monitoring page, setting the category name and hilighting the
+ * appropriate devices. Add logic here to recalculate the details and 
+ * repopulate the graphs accordingly.
+ */
 var bindCategoryButtons = function() {
 	$(".category").bind("click", function(e) {
 		var requestedID = this.id;
@@ -90,6 +110,11 @@ var bindCategoryButtons = function() {
 };
 bindCategoryButtons();
 
+/**
+ * This is the controller for the device globes on the energy monitoring page
+ * it reports the device name to the details box and sets the switch if it is a light
+ * Add logic here to control and rebuild the graphs accordingly 
+ */
 var bindDeviceButtons = function() {
 	$(".device").bind("click", function(e) {
 		$('#space').html("<h3>"+this.id+"</h3>");
@@ -119,6 +144,11 @@ var bindDeviceButtons = function() {
 };
 bindDeviceButtons();
 
+/**
+ * This function binds the events for the switches both on the water monitoring 
+ * and the energy monitoring pages. There is not yet logic to send an ajax message to the server 
+ * in order to control the device
+ */
 var bindSwitches = function() {
 	$(".hSwitch").bind("click", function(e) {
 		if($('#waterSwitchHorizontal').hasClass('offSwitch')){
@@ -154,6 +184,9 @@ var bindSwitches = function() {
 };
 bindSwitches();
 
+/**
+ * This is the controller for the graph buttons on the portal page
+ */
 var bindGraphButtons = function() {
 	$(".arrow").bind("click", handler = function(e) {
 		var leftMargin = $("#centerGraphLandscape").css("margin-left");
@@ -186,6 +219,9 @@ var bindGraphButtons = function() {
 };
 bindGraphButtons();
 
+/**
+ * This is the controller for the graph buttons on the hvac page
+ */
 var bindThermGraphButtons = function() {
 	$(".thermArrow").bind("click", handler = function(e) {
 		var leftMargin = $("#thermCenterGraphLandscape").css("margin-left");
@@ -218,6 +254,9 @@ var bindThermGraphButtons = function() {
 };
 bindThermGraphButtons();
 
+/**
+ * This is the controller for the graph buttons on the solar panels page
+ */
 var bindSunGraphButtons = function() {
 	$(".sunArrow").bind("click", handler = function(e) {
 		var leftMargin = $("#sunCenterGraphLandscape").css("margin-left");
@@ -250,6 +289,9 @@ var bindSunGraphButtons = function() {
 };
 bindSunGraphButtons();
 
+/**
+ * This is the controller for the graph buttons on the water monitoring page
+ */
 var bindWaterGraphButtons = function() {
 	$(".waterArrow").bind("click", handler = function(e) {
 		var leftMargin = $("#waterCenterGraphLandscape").css("margin-left");
@@ -282,6 +324,9 @@ var bindWaterGraphButtons = function() {
 };
 bindWaterGraphButtons();
 
+/**
+ * This is the controller for the graph buttons on the energy monitoring page
+ */
 var bindHistoryGraphButtons = function() {
 	$(".monitorArrow").bind("click", handler = function(e) {
 		// need some more logic here to check which type of graph is showing
@@ -317,6 +362,10 @@ var bindHistoryGraphButtons = function() {
 };
 bindHistoryGraphButtons();
 
+/**
+ * This controls the chart selectors on the energy monitoring page
+ * it grabs the appropriate graphs corresponding to the users selection 
+ */
 var bindMonitorSelectorButtons = function() {
 	$(".glossy").bind("click", handler = function(e) {
 		$('.glossy').removeClass('selected');
@@ -354,6 +403,10 @@ var bindMonitorSelectorButtons = function() {
 };
 bindMonitorSelectorButtons();
 
+/**
+ * Simple controller for the notification system this simply shows
+ * and hides the notification pane as necessary
+ */
 var bindNotifyButton = function() {
 	$("#notifyButton").bind("click", handler = function(e) {
 		$('#notify').addClass('inactive');
@@ -363,6 +416,3 @@ var bindNotifyButton = function() {
 	});
 };
 bindNotifyButton();
-
-
-// perhaps a touch gesture listener which allows for pageflipping through the subpages

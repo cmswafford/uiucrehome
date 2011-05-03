@@ -1,6 +1,8 @@
-
 /**
- * Info Page specific styles
+ * Styling for the ReHome Gallery Subpage
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
  */
 #infoMain{ background: url(../images/infoMain.png) no-repeat top; border-bottom:4px solid red; height:683px; width:100%; }
 #infoBottom{ width:100%; background-color: blue; }

@@ -1,5 +1,8 @@
 /**
- * Portal Page specific styles
+ * Styling for the Portal page
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
  */
 #portal { width:1024px; height:768px; }
 .steelGradient { -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(0.45,rgba(0,0,0,1)), to(rgba(0,0,0,0.2))); }
@@ -28,7 +31,7 @@
 .rightArrow { width:100px; }
 .centerGraphViewPort { width:800px; height:400px; margin:30px 12px 0px 12px; }
 .centerGraphLandscape { width:4800px; height:400px; margin-left:0px; }
-.landscape {-webkit-transition:margin-left 0.5s ease-in-out; }
+.landscape { -webkit-transition:margin-left 0.5s ease-in-out; }
 #graphic1, #graphic2, #graphic3, #graphic4, #graphic5, #graphic6 {  height:400px; width:800px; }
 
 .graphicButton { font-size:1.5em; height:480px; line-height:480px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000;  }
