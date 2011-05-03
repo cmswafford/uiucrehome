@@ -9,7 +9,7 @@ $aOptions = array();
 
 $iIntervalS = 10*60; // 10 minutes, in seconds
 $iIntervalMS = 10*60*1000; // 10 minutes, in milliseconds
-$iCurrentTimekey = ceil(time()/(10*60));
+$iCurrentTimekey = ceil(time()/$iIntervalS);
 
 // Get the datapoints from the DB
 $aOptions['fields'] = "CEILING(UNIX_TIMESTAMP(created_at)/(10*60)) as timekey, ROUND(SUM(VALUE)/COUNT(*), 2) as value";
@@ -24,30 +24,22 @@ $aLogs = $oPowerLogs->select($aOptions);
 for( $i = 0; $i < 24; $i++ )
 {
   $iThisTimekey = $iCurrentTimekey-1-$i;
-  $aT[$i] = array( $iThisTimekey*$iIntervalMS, 0 );
-  $aPast4Hours[$i] = 0;
+  $aPast4Hours[$i] = array( $iThisTimekey*$iIntervalMS, 0 );
 }
 
 foreach( $aLogs as $k => $aRow )
 {
-  $aPast4Hours[$iCurrentTimekey-1-$aRow['timekey']] = (float)$aRow['value'];
-  $aT[$iCurrentTimekey-1-$aRow['timekey']] = array( $aRow['timekey']*$iIntervalMS, (float)$aRow['value']);
+  $aPast4Hours[$iCurrentTimekey-1-$aRow['timekey']] = array( $aRow['timekey']*$iIntervalMS, (float)$aRow['value']);
 }
 
-/*foreach( $aPast4Hours as $k => $v )
-{
-  //$aT[$iCurrentTimekey-1-$aRow['timekey']] = array( ($iCurrentTimekey-1-$k)*10*60, $v);
-}  */
-
-//$aReturn[0] = array_reverse($aPast4Hours);
-$aReturn[0] = array_reverse($aT);
+$aReturn[0] = array_reverse($aPast4Hours);
 
 
 // Past 12 hours
 
 $iIntervalS = 30*60; // 30 minutes
 $iIntervalMS = 30*60*1000; // 30 minutes in milliseconds
-$iCurrentTimekey = ceil(time()/($iIntervalS));
+$iCurrentTimekey = ceil(time()/$iIntervalS);
 
 // Get the datapoints from the DB
 $aOptions['fields'] = "CEILING(UNIX_TIMESTAMP(created_at)/(30*60)) as timekey, ROUND(SUM(VALUE)/COUNT(*), 2) as value";
@@ -62,26 +54,23 @@ $aLogs = $oPowerLogs->select($aOptions);
 for( $i = 0; $i < 24; $i++ )
 {
   $iThisTimeKey = $iCurrentTimekey-1-$i;
-  $aT[$i] = array( $iThisTimeKey*$iIntervalMS, 0 );
-  $aPast12Hours[$i] = 0;
+  $aPast12Hours[$i] = array( $iThisTimeKey*$iIntervalMS, 0 );
 }
 
 // Get log data
 foreach( $aLogs as $k => $aRow )
 {
-  $aPast12Hours[$iCurrentTimekey-1-$aRow['timekey']] = (float)$aRow['value'];
-  $aT[$iCurrentTimekey-1-$aRow['timekey']] = array( $aRow['timekey']*$iIntervalS, (float)$aRow['value']);
+  $aPast12Hours[$iCurrentTimekey-1-$aRow['timekey']] = array( $aRow['timekey']*$iIntervalMS, (float)$aRow['value']);
 }
 
-//$aReturn[1] = array_reverse($aPast12Hours);
-$aReturn[1] = array_reverse($aT);
+$aReturn[1] = array_reverse($aPast12Hours);
 
 
 // Past 24 hours
 
 $iIntervalS = 60*60; // 60 minutes in seconds
 $iIntervalMS = 60*60*1000; // 60 minutes in milliseconds
-$iCurrentTimekey = ceil(time()/(60*60));
+$iCurrentTimekey = ceil(time()/$iIntervalS);
 
 // Get the datapoints from the DB
 $aOptions['fields'] = "CEILING(UNIX_TIMESTAMP(created_at)/(60*60)) as timekey, ROUND(SUM(VALUE)/COUNT(*), 2) as value";
@@ -96,22 +85,19 @@ $aLogs = $oPowerLogs->select($aOptions);
 for( $i = 0; $i < 24; $i++ )
 {
   $iThisTimekey = $iCurrentTimekey-1-$i;
-  $aT[$i] = array( $iThisTimekey*$iIntervalMS, 0 );
-  $aPast24Hours[$i] = 0;
+  $aPast24Hours[$i] = array( $iThisTimekey*$iIntervalMS, 0 );
 }
 foreach( $aLogs as $k => $aRow )
 {
-  $aPast24Hours[$iCurrentTimekey-1-$aRow['timekey']] = (float)$aRow['value'];
-  $aT[$iCurrentTimekey-1-$aRow['timekey']] = array( $aRow['timekey']*$iIntervalMS, (float)$aRow['value']);
+  $aPast24Hours[$iCurrentTimekey-1-$aRow['timekey']] = array( $aRow['timekey']*$iIntervalMS, (float)$aRow['value']);
 }
-//$aReturn[2] = array_reverse($aPast24Hours);
-$aReturn[2] = array_reverse($aT);
+$aReturn[2] = array_reverse($aPast24Hours);
 
 
 // Past 3 days
-$iCurrentTimekey = ceil(time()/(3*60*60));
 $iIntervalS = 3*60*60; // 3 hours in seconds
 $iIntervalMS = 3*60*60*1000; // 3 hours in milliseconds
+$iCurrentTimekey = ceil(time()/$iIntervalS);
 
 $aOptions['fields'] = "CEILING(UNIX_TIMESTAMP(created_at)/(3*60*60)) as timekey, ROUND(SUM(VALUE), 2) as value";
 $aOptions['where'] = 'UNIX_TIMESTAMP(created_at) >= '. (($iCurrentTimekey-25)*$iIntervalS).' AND UNIX_TIMESTAMP(created_at) < '.($iCurrentTimekey-1)*$iIntervalS;
@@ -123,8 +109,7 @@ $aOptions['limit'] = 24;
 for( $i = 0; $i < 24; $i++ )
 {
   $iThisTimekey = $iCurrentTimekey-1-$i;
-  $aT[$i] = array( $iThisTimekey*$iIntervalMS, 0 );
-  $aPast3Days[$i] = 0;
+  $aPast3Days[$i] = array( $iThisTimekey*$iIntervalMS, 0 );
 }
 
 // Get log data
@@ -133,12 +118,10 @@ $aLogs = $oPowerLogs->select($aOptions);
 
 foreach( $aLogs as $k => $aRow )
 {
-  $aPast3Days[$iCurrentTimekey-1-$aRow['timekey']] = (float)$aRow['value'];
-  $aT[$iCurrentTimekey-1-$aRow['timekey']] = array( $aRow['timekey']*$iIntervalMS, (float)$aRow['value']);
+  $aPast3Days[$iCurrentTimekey-1-$aRow['timekey']] = array( $aRow['timekey']*$iIntervalMS, (float)$aRow['value']);
 }
 
-//$aReturn[3] = array_reverse($aPast3Days);
-$aReturn[3] = array_reverse($aT);
+$aReturn[3] = array_reverse($aPast3Days);
 
 /*echo count($aReturn[0])."\n";
 echo count($aReturn[1])."\n";

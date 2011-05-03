@@ -12,13 +12,62 @@
     <h1>UIUC ReHome Server Setup Documentation</h2>
     <h2>Navigation</h2>
     <ul>
-      <li><a href="#intro">Intro</a></li>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#hardware">Hardware Specs</a></li>
       <li><a href="#software">Installing & Configuring Software</a></li>
       <li><a href="#repository">Setting Up the repository</a></li>
     </ul>
 
+    <h2 id="intro">Introduction</h2>
+    <div>
+      <p>The UIUC Re_home webapp is a fantastic tool to monitor and control the home. Necessarily, the webapp must be hosted somewhere; the ideal solution for this is to host the project from a server on the Local Area Network within the home. For our project, we have purchased a modest computer and used a combination of common open-source software to serve the project to client devices, e.g. iPad. The app uses a LAMP software stack to host the application. The linux distribution of choice in this project is Ubuntu 10.04 LTS. This guide will provide all commands based on an Ubuntu system.</p>
+    </div>
+
+    <h2 id="hardware">Hardware Specs</h2>
+    <div>
+      <p>The Re_home webapp does not push the computational boundaries of common computer systems. The primary focus for making the decision on server hardware was small size, quiet operation, and low-energy.</p>
+      <p>A complete list of the server hardware used to serve the webapp:
+        <ul>
+          <li>Barebones Mini-Top with 1.8GHz Dual-Core Atom and NVIDIA ION 2 - <a href="http://www.newegg.com/Product/Product.aspx?Item=56-107-072">Jetway HBJC600C99-52W-BW</a></li>
+          <li>2GB DDR2 800 RAM - <a href="http://www.newegg.com/Product/Product.aspx?Item=N82E16820148162">Crucial CT25664AC800</a></li>
+          <li>50GB Solid State Drive - <a href="http://www.newegg.com/Product/Product.aspx?Item=N82E16820227531">OCZ Agility 2 OCZSSD2-2AGT50G</a></li>
+        </ul>
+      </p>
+      <p>To provide a home network, a <a href="http://www.newegg.com/Product/Product.aspx?Item=33-124-190">Linksys WRT54GL</a> router was set up and configured with Tomato.</p>
+    </div>
+
+    <h2 id="software">Installing & Configuring Software</h2>
+    <div>
+      <p>The following software is required to host an instance of the Re_home application:</p>
+      <ul>
+        <li><a href="http://httpd.apache.org/download.cgi">Apache 2.2</a></li>
+        <li><a href="http://dev.mysql.com/downloads/mysql/">MySQL Server 5.1</a></li>
+        <li><a href="http://php.net/downloads.php">PHP 5.3</a></li>
+      </ul>
+      <p>Download and install each of the linked software packages.</p>
+      <span class="code">sudo apt-get install apache2 mysql-server php5 libapache2-mod-php5 php5-mysql</span>
+      <p>Next set up a new virtual host in apache to serve the site. The following is an example configuration file that would be stored in /etc/apache2/sites-available</p>
+<pre>&lt;VirtualHost *:80>
+    ServerName uiucrehome.domain.com
+    ServerAlias uiucrehome
+    DocumentRoot /var/www/uiucrehome/public
+    DirectoryIndex index.php index.html
+    LogLevel debug
+   
+    &lt;IfModule mod_deflate.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript text/xhtml application/x-javascript
+    &lt;/IfModule>
+&lt;/VirtualHost></pre>
+      <p>Don't forget to make a link to /etc/apache2/sites-enabled when you are done. Restart apache.</p>
+<pre>cd /etc/apache2/sites-enabled
+ln -s ../sites-available/uiucrehome
+sudo apache2ctl graceful
+</pre>
+    </div>
+
     <h2 id="repository">Setting Up the Repository</h2>
     <div>
+      <p>In order to get the project files, they must be cloned from the git repository hosted on github. Following from the given apache configuration, put the repository in /var/www</p>
       <ol>
         <li><a href="https://github.com/signup/free">Sign-up</a> or <a href="https://github.com/login">login</a> for github.</li>
         <li><a href="http://git-scm.com/download">Download</a> and install git</li>
@@ -29,20 +78,6 @@
       </ol>
     </div>
 
-    <h2 id="software">Installing & Configuring Software</h2>
-    <div>
-      <p>In order to host an instance of the application, you must have the following software installed:</p>
-      <ul>
-        <li><a href="http://httpd.apache.org/download.cgi">Apache 2.2</a></li>
-        <li><a href="http://dev.mysql.com/downloads/mysql/">MySQL Server 5.1</a></li>
-        <li><a href="http://php.net/downloads.php">PHP 5.3</a></li>
-      </ul>
-      <p>Download and install each of the linked software packages. If you are using a debian based distribution such as Ubuntu, you may use the following command to install all the software.</p>
-      <span class="code">sudo apt-get install apache2 mysql-server php5 libapache2-mod-php5 php5-mysql</span>
-      <p>Next set up apache </p>
-
-      <p></p>
-    </div>
 
   </body>
 </html>

@@ -4,9 +4,10 @@ Highcharts.setOptions({
    }
 });
 
+/*
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var d = new Date();
-/*var currentHour = d.getHours();
+var currentHour = d.getHours();
 var currentMonthWord = months[d.getMonth()];
 var currentMonth = d.getMonth();
 var currentDate = d.getDate();
@@ -45,7 +46,7 @@ var setCharts = function(chartData) {
   chartData = eval('('+chartData+')');
 
 	for(i=1;i<=4;i++) {
-		var graphic = "graphic" + i;
+		var graphic = "portal-graph-" + i;
 		chart[i] = new Highcharts.Chart({
 			chart: {
 				renderTo: graphic,

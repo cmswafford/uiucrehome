@@ -26,6 +26,7 @@ switch( $_GET['page'] )
         $aOptions['limit'] = 1;
 
         $aLog = $oPowerLogs->select($aOptions);
+        FB::log($oPowerLogs->getLastQuery());
         if( !$aLog ) return;
         $aLog['timekey'] = (int)$aLog['timekey'];
         $aLog['value'] = (float)$aLog['value'];

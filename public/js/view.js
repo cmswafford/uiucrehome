@@ -2,7 +2,7 @@
  * @author Daniel
  */
 
-$(document).ready(function() { 
+/*$(document).ready(function() { 
 	$('.clock').jclock();
 
   var handleGetPortalGraphs = function( response ) { setCharts(response); };
@@ -19,3 +19,4 @@ $(document).ready(function() {
 	}, 4000);
   
 });
+*/

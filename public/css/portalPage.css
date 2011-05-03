@@ -29,7 +29,7 @@
 .centerGraphViewPort { width:800px; height:400px; margin:30px 12px 0px 12px; }
 .centerGraphLandscape { width:4800px; height:400px; margin-left:0px; }
 .landscape {-webkit-transition:margin-left 0.5s ease-in-out; }
-#graphic1, #graphic2, #graphic3, #graphic4, #graphic5, #graphic6 {  height:400px; width:800px; }
+#portal-graph-0, #portal-graph-1, #portal-graph-2, #portal-graph-3, #portal-graph-4, #graphic5, #graphic6 {  height:400px; width:800px; }
 
 .graphicButton { font-size:1.5em; height:480px; line-height:480px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000;  }
 .headTemp { padding:10px; width: 90px; margin:20px; margin-top:20px; color:#eee; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.8)), to(rgba(0,0,0,0.4))); -webkit-border-radius: 10px;}
