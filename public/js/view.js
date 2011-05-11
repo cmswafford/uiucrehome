@@ -4,15 +4,14 @@
  * @date Spring 2011
  */
 
-/*$(document).ready(function() { 
- // This calls all the contained functions when the document is ready
- // which means that the DOM tree has been loaded
+// This calls all the contained functions when the document is ready
+// which means that the DOM tree has been loaded
 $(document).ready(function() { 
 	 // Runs the jquery.clock script in order to fetch the date and time widgets for 
 	 // all the pages which contain it
 	$('.clock').jclock();
 
-  var handleGetPortalGraphs = function( response ) { setCharts(response); };
+  var handleGetPortalGraphs = function( response ) { setPortalCharts(response); };
   $.ajax({ url: 'ajax/initPortalGraphs.php', data: { foo: 'bar' }, success: handleGetPortalGraphs });
 
  	// These functions set up all of the charts necessary to be displayed
@@ -27,17 +26,16 @@ $(document).ready(function() {
 	//
 	// This function will display a splashscreen for 4 seconds which should be
 	// enough time for the charts to receive their data and be rendered
-	setTimeout(function() {
+	/*setTimeout(function() {
 		$('#bod').removeClass('startUp');
 		$('#landscape').removeClass('inactive');
 	}, 4000);
+  */
+
+  // Show splash screen
+  setTimeout(function() { $('body').removeClass('startUp'); $('#landscape').removeClass('inactive'); }, 1000);
   
-  	var myScroll;
-	function loaded() {
-	setTimeout(function () {
-			myScroll = new iScroll('wrapper', {hScrollbar:false});
-		}, 100);
-	}
+  var myScroll;
+	function loaded() { setTimeout(function () { myScroll = new iScroll('wrapper', {hScrollbar:false}); }, 100); };
 	window.addEventListener('load', loaded, false);
 });
-*/

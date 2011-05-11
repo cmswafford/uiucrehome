@@ -1,37 +1,5 @@
-Highcharts.setOptions({
-   global: {
-      useUTC: false
-   }
-});
-
-/*
-var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var d = new Date();
-var currentHour = d.getHours();
-var currentMonthWord = months[d.getMonth()];
-var currentMonth = d.getMonth();
-var currentDate = d.getDate();
-var currentMinutes = d.getMinutes();
-var currentYear = d.getFullYear();
-
-var chartStart = new Array();
-chartStart[0] = Date.UTC(currentYear, currentMonth, currentDate, currentHour-4, (parseInt(currentMinutes/10)+1)*10, 0);
-chartStart[1] = Date.UTC(currentYear, currentMonth, currentDate, currentHour-12, (parseInt(currentMinutes/30)+1)*30, 0);
-chartStart[2] = Date.UTC(currentYear, currentMonth, currentDate-1, currentHour+1, 0, 0);
-chartStart[3] = Date.UTC(currentYear, currentMonth, currentDate-3, (currentHour+1), 0, 0);
-*/
-var chartSubtitles = new Array();
-chartSubtitles[0] = 'Past 4 hours';
-chartSubtitles[1] = 'Past 12 hours';
-chartSubtitles[2] = 'Past 24 hours';
-chartSubtitles[3] = 'Past 3 days';
-
-// Intervals such that each chart requires 24 x values
-var chartIntervals = new Array();
-chartIntervals[0] = 600000; // 10 min
-chartIntervals[1] = 1800000; // 30 min
-chartIntervals[2] = 3600000; // 60 min
-chartIntervals[3] = 10800000; // 3 hours
+// Initialize Highcharts
+Highcharts.setOptions({ global: { useUTC: false } });
 
 function getNextPoint( page, graph, duration )
 {
@@ -40,109 +8,147 @@ function getNextPoint( page, graph, duration )
   $.ajax({ url: WWW+'/ajax/getNextPoint.php', data: { page: page,  graph: graph, duration: duration }, success: handleGetNextPoint });
 }
 
+var charts = {};
 var chart = new Array();
-var setCharts = function(chartData) {
-  // eval the JSON
-  chartData = eval('('+chartData+')');
 
-	for(i=1;i<=4;i++) {
-		var graphic = "portal-graph-" + i;
-		chart[i] = new Highcharts.Chart({
-			chart: {
-				renderTo: graphic,
-				defaultSeriesType: 'areaspline',
-				backgroundColor: 'rgba(0,0,0,0)',
-        events: {
-          load: function() {
-   
-               // set up the updating of the chart each second
-               var series = this.series[0];
-               setInterval(function() {
-                  var x = (new Date()).getTime(), // current time
-                     y = getNextPoint('portal', 'timevspower', '4h');
-                  series.addPoint([x, y], true, true);
-               }, chartIntervals[i-1]);
-            }
+// Creates basic time line graph
+var createLineChart = function( options )
+{
+  charts[name] = new Highcharts.Chart({
+    chart: {
+      renderTo: options.chartContainer,
+      defaultSeriesType: 'areaspline',
+      backgroundColor: 'rgba(0,0,0,0)',
+      events: {
+        load: function() {
+             // set up the updating of the chart each second
+             var series = this.series[0];
+             setInterval(function() {
+                var x = (new Date()).getTime(), // current time
+                   y = getNextPoint('portal', 'timevspower', '4h');
+                   //y = function(){ return 0; };
+                series.addPoint([x, y], true, true);
+             }, options.interval);
           }
-			},
-			title: {
-				text: 'Time vs. Power'
-			},
-			subtitle: {
-				text: chartSubtitles[i-1]
-			},
-			xAxis: {
-				type: 'datetime',
-        dateTimeLabelFormats: { second: '%H:%M' }
-			},
-			yAxis: {
-				title: {
-					text: 'Kilowatts'
-				},
-				min: 0,
-				minorGridLineWidth: 0, 
-				gridLineWidth: 0.1,
-				alternateGridColor: null,
-			},
-			tooltip: {
-				backgroundColor: 'rgba(50,50,50,0.7)',
-				style: {
-         			color: '#FFF'
-      			},
-				borderWidth: 0,
-				crosshairs: true,
-				shadow: true,
-				snap: 25,
-				formatter: function() {
-		                return ''+
-						Highcharts.dateFormat('%e. %b %Y, %H:%M', this.x) +': '+ this.y +' Kilowatts';
-				}
-			},
-			colors: ['#d5d61d', '#1d90c6', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
-			legend: 'null',
-		    credits: 'null',
-			plotOptions: {
-				areaspline: {
-					lineWidth: 3,
-					states: {
-						hover: {
-							lineWidth: 3
-						}
-					},
-					marker: {
-						enabled: false,
-						states: {
-							hover: {
-								enabled: true,
-								symbol: 'circle',
-								radius: 4,
-								lineWidth: 0.1
-							}
-						}	
-					},
-					pointInterval: chartIntervals[i-1],
-					pointStart: chartData[i-1][0][0]*1000
-				}
-			},
-			series: [{
-				fillColor: {
-		                linearGradient: [0, 0, 0, 270],
-		                stops: [
-		                    [0, 'rgb(255, 246, 60)'],
-		                    [1, 'rgba(2,0,0,0)']
-		                ]
-		            },
-				data: chartData[i-1]
-			}]
-			,
-			navigation: {
-				menuItemStyle: {
-					fontSize: '10px'
-				}
-			}
-		});
-	}
-	
+        }
+    }
+    ,title: { text: options.title }
+    ,subtitle: { text: options.subtitle }
+    ,xAxis: { type: 'datetime', dateTimeLabelFormats: { second: '%H:%M' } }
+    ,yAxis: {
+      title: { text: 'Kilowatts' },
+      min: 0,
+      minorGridLineWidth: 0, 
+      gridLineWidth: 0.1,
+      alternateGridColor: null,
+    }
+    ,tooltip: {
+      backgroundColor: 'rgba(50,50,50,0.7)',
+      style: { color: '#FFF' },
+      borderWidth: 0,
+      crosshairs: true,
+      shadow: true,
+      snap: 25,
+      formatter: function() { return Highcharts.dateFormat('%e. %b %Y, %H:%M', this.x) +': '+ this.y +' Kilowatts'; }
+    },
+    colors: ['#d5d61d', '#1d90c6', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
+    legend: 'null',
+      credits: 'null',
+    plotOptions: {
+      areaspline: {
+        lineWidth: 3,
+        states: {
+          hover: {
+            lineWidth: 3
+          }
+        },
+        marker: {
+          enabled: false,
+          states: {
+            hover: {
+              enabled: true,
+              symbol: 'circle',
+              radius: 4,
+              lineWidth: 0.1
+            }
+          }	
+        },
+        pointInterval: options.interval,
+        pointStart: options.pointStart
+      }
+    },
+    series: [{
+      fillColor: {
+                  linearGradient: [0, 0, 0, 270],
+                  stops: [
+                      [0, 'rgb(255, 246, 60)'],
+                      [1, 'rgba(2,0,0,0)']
+                  ]
+              },
+      data: options.data
+    }]
+    ,
+    navigation: {
+      menuItemStyle: {
+        fontSize: '10px'
+      }
+    }
+  });
+};
+
+var setPortalCharts = function( response )
+{
+  var responseData = eval('('+response+')');
+  var options = {};
+  options.title = 'Time vs. Power';
+  for( i in responseData )
+  {
+    i = parseInt(i); // i is a string when parsed from the json
+    switch(i)
+    {
+      // Past 4 hours
+      case 0:
+        options.chartContainer = 'portal-graph-0';
+        options.subtitle = 'Past 4 hours';
+        options.data = responseData[i];
+        options.interval = 600000; // 10 min in milliseconds
+        options.pointStart = responseData[i][0][0]*1000;
+        createLineChart(options);
+      break;
+
+      // Past 12 hours
+      case 1:
+        options.chartContainer = 'portal-graph-1';
+        options.subtitle = 'Past 12 hours';
+        options.data = responseData[i];
+        options.interval = 1800000; // 30 min in milliseconds
+        options.pointStart = responseData[i][0][0]*1000;
+        createLineChart(options);
+      break;
+
+      // Past 24 hours
+      case 2:
+        options.chartContainer = 'portal-graph-2';
+        options.subtitle = 'Past 24 hours';
+        options.data = responseData[i];
+        options.interval = 3600000; // 60 min in milliseconds
+        options.pointStart = responseData[i][0][0]*1000;
+        createLineChart(options);
+      break;
+
+      // Past 3 days
+      case 3:
+        options.chartContainer = 'portal-graph-3';
+        options.subtitle = 'Past 3 days';
+        options.data = responseData[i];
+        options.interval = 10800000; // 3 hours in milliseconds
+        options.pointStart = responseData[i][0][0]*1000;
+        createLineChart(options);
+      break;
+
+      default:
+    }
+  }
 };
 
 var thermChart = new Array();
