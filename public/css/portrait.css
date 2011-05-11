@@ -1,3 +1,13 @@
+/**
+ * Styling for the Portrait View, the iPad automagically
+ * loads this on orientation change and it simply displays a 
+ * splash screen, since the app is madde only to work in
+ * the landscape orientation. 
+ * 
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
+ */
 #viewport { display:none; }
 body { background-image: url(../images/startup.png) !important; background-position:center; }
 

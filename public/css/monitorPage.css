@@ -1,3 +1,10 @@
+/**
+ * Styling for the Energy Monitoring Subpage
+ * Also see floorplan.js for more info.
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
+ */
 .house { height:658px; width:510px; z-index:10;}
 .monitorTop { height:110px !important;}
 #holder { margin:0 auto; margin-top:-85px;}
@@ -32,6 +39,7 @@
 .inUse:hover { border:solid 1px #000; -webkit-box-shadow:0 0 15px #eee; }
 .off { -webkit-box-shadow:0 0 5px #111; background:-webkit-gradient(linear, left top, right bottom, from(rgba(90,90,90,1)), to(rgba(0,0,0,0.4)));}
 .deviceSelected { -webkit-box-shadow:0 0 15px #eee; }
+
 #d0000 { top:22px; 	left:38px; }
 #d0001 { top:252px; left:38px; }
 #d0002 { top:537px; left:433px; }

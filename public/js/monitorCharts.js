@@ -1,5 +1,27 @@
+/**
+ * This File sets up all the default info for graphs on the
+ * energy monitoring page. As it stands it will loop through all 4 sets in
+ * each category and build a placeholder graph for the prototype. A configuration
+ * object must be built for each graph type and data must be collected from the server
+ * for this to be fully functional.
+ * 
+ * @author Daniel Mestas
+ * @netid mestas1
+ * @email dan5446@gmail.com
+ * @date Spring 2011
+ */
+
+/**
+ * This variable holds the chart type currently being viewed 
+ * so we dont reload an already loaded graph
+ */
 var selectedType = 'history';
 
+
+/**
+ * Sets up the power usage breakdown by category graphs
+ * Add logic to grab the correct datum from a json object sent by the server
+ */
 var breakdown = new Array();
 var setBreakdownCharts = function() {
 	for(i=1;i<5;i++) {
@@ -13,6 +35,9 @@ var setBreakdownCharts = function() {
 			 backgroundColor: 'rgba(0,0,0,0)',
 	         plotShadow: false            
 	      },
+		  credits: {
+		  	enabled: false
+		  },
 	      title: {
 	         text: 'Energy Usage Per Device/Category'
 	      },
@@ -61,6 +86,10 @@ var setBreakdownCharts = function() {
 	}	
 };
 
+/**
+ * Sets up the power usage over time bar graphs
+ * Add logic to grab the correct datum from a json object sent by the server
+ */
 var bargraphs = new Array();
 var setBarCharts = function() {
 	for(i=1;i<5;i++) {
@@ -71,6 +100,9 @@ var setBarCharts = function() {
 	         defaultSeriesType: 'column',
 			 backgroundColor: 'rgba(0,0,0,0)'
 	      },
+		  credits: {
+		  	enabled: false
+		  },
 	      title: {
 	         text: 'Energy Usage By Category'
 	      },
@@ -139,6 +171,11 @@ var setBarCharts = function() {
 	}	
 };
 
+/**
+ * Sets up the power usage vs temperature graphs, this can be changed to any type 
+ * of graph which is necessary.
+ * Add logic to grab the correct datum from a json object sent by the server
+ */
 var otherCharts = new Array();
 var setOtherCharts = function() {
 	for(i=1;i<5;i++) {
@@ -149,6 +186,9 @@ var setOtherCharts = function() {
 	         zoomType: 'xy',
 			 backgroundColor: 'rgba(0,0,0,0)'
 	      },
+		  credits: {
+		  	enabled: false
+		  },
 	      title: {
 	         text: 'Average Monthly Temperature and Energy Usage'
 	      },

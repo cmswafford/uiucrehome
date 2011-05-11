@@ -1,5 +1,10 @@
 /**
- * Landscape orientation specific styles
+ * General Styles for default Landscape orientation
+ * also some site-wide styles such as for the notification
+ * system.
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
  */
 @font-face {
 	font-family: 'Myriad Pro';
@@ -68,9 +73,70 @@
 	position:relative;
 }
 
+/* Reset Default Styles */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+* {
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-user-select: none;
+}
+
+h4 { font-weight:normal; }
+
+ol, ul { list-style: none; }
+
+:focus { outline: 0; }
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Site Specific Styles */
+body {
+	background: #000;
+	display:block;
+	color:#ddd;
+	background: -moz-linear-gradient(top, #333, #111);
+    background: -webkit-gradient(linear, center top, center bottom, from(#222), to(#000));
+	
+}
+
+p,
+div{
+	font-family:  Helvetica,Arial,sans-serif;
+	color: #fff;
+	font-size: 1.1em;
+	line-height:1.2em;
+}
+h5 { font-size:small; }
+.viewport { overflow:hidden; margin:0 auto; }
+.portalView { width:1024px; background: url(../images/graphic.png) no-repeat center 20px; }
+.portalLandscape { width:1024px;  }
+
+text { font-family: "Myriad Pro" !important; }
+
 /* Notification widget Styles */
 .notify {
 	width: 270px;
+	max-height:100px;
 	line-height: 25px;
 	position: absolute;
 	right: 20px;
@@ -87,6 +153,8 @@
 }
 
 .notify h2 { padding: 4px;}
+
+#wrapper { max-height: 104px; overflow: hidden;}
 
 .notifyButton {
 	width:20px;

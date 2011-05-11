@@ -1,3 +1,10 @@
+/**
+ * Styling for the Water Monitoring Subpage
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
+ */
+
 .w1  { background: -webkit-gradient(linear, left top, right top, from(#3b0055), to(#39035a)); }
 .w2  { background: -webkit-gradient(linear, left top, right top, from(#39035a), to(#360560)); }
 .w3  { background: -webkit-gradient(linear, left top, right top, from(#360560), to(#310866)); }
