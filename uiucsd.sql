@@ -42,7 +42,12 @@ INSERT INTO devices( category_id, room_id, metadata )
 
 CREATE TABLE power_logs ( power_log_id INT UNSIGNED AUTO_INCREMENT
                          ,device_id INT UNSIGNED DEFAULT NULL
-                         ,value FLOAT DEFAULT NULL
+                         ,RMS_voltage FLOAT DEFAULT NULL
+                         ,RMS_current FLOAT DEFAULT NULL
+                         ,apparent_power FLOAT DEFAULT NULL
+                         ,real_power FLOAT DEFAULT NULL
+                         ,PF FLOAT DEFAULT NULL
+                         ,PF_angle FLOAT DEFAULT NULL
                          ,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                          ,PRIMARY KEY (power_log_id)
                          ,FOREIGN KEY (device_id) REFERENCES devices(device_id)
