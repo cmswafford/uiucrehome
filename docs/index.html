@@ -16,12 +16,13 @@
       <li><a href="#intro">Introduction</a></li>
       <li><a href="#hardware">Hardware Specs</a></li>
       <li><a href="#software">Installing & Configuring Software</a></li>
+      <li><a href="#directory_tree">Project Directory Tree</a></li>
       <li><a href="#repository">Setting Up the repository</a></li>
       <li><a href="#database_struct">Database Structure</a></li>
       <li><a href="#modify_log">Logging Data Modification</a></li>
-      <li><a href="#access">Database Access</a></li>
-      <li><a href="#read_serial">Read Monitoring Data</a></li>
+      <li><a href="#access">PHP Framework & Database Access</a></li>
       <li><a href="#bootstap">Bootstrap Process</a></li>
+      <li><a href="#read_serial">Read Monitoring Data</a></li>
     </ul>
 
     <h2 id="intro">Introduction</h2>
@@ -84,6 +85,19 @@ sudo apache2ctl graceful
          <p>This will create a folder named uiucrehome in your current directory. This project will have all the files necessary to host the application.</p>
     </div>
 
+    <h2 id="directory_tree">Project Directory Tree</h2>
+    <div>
+      <p>The project has 6 main folders.</p>
+      <ul>
+        <li><strong>config</strong> - Contains the config.php and constants.php files which are environment variables for the app instance. config.sample.php should be copied to config.php after cloning the repository.</li>
+        <li><strong>docs</strong> - Contains this document to explain the system.</li>
+        <li><strong>lib</strong> - Contains all PHP library files that need to be included e.g. DB Models, Logging class, etc.</li>
+        <li><strong>log</strong> - This folder needs to be writeable by the apache user! This folder contains files used for logging events. Very useful for debugging.</li>
+        <li><strong>public</strong> - DOCUMENT_ROOT for the apache virtual host. Anything in this folder is acessible from the ROOT_URL using a browser.</li>
+        <li><strong>scripts</strong> - This folder contains all the API scripts to insert data into the database.</li>
+      </ul>
+    </div>
+
     <h2 id="database_struct">Database Structure</h2>
     <div>
       <p>The database has 7 tables: <i>categories</i>, <i>rooms</i>, <i>devices</i>, <i>power_logs</i>, <i>temperature_logs</i>, <i>water_logs</i>, and <i>solar_logs</i>.
@@ -115,19 +129,21 @@ sudo apache2ctl graceful
 	</div>
 
 	<div>
-      <h2 id="access">Database Access</h2>
-      <p>The database is a MySQL database which is accessed through MySQL queries. The setup of the PHP scripts allow data to be inserted and retrieved from the database with scripts such as <span class="code2">insert_log.php.</span>  This setup includes a skeleton of a MySQL query and modifies it according to the arguments. These modified MySQL queries are used to insert and retrieve different types of data from different combinations using tables in the database.</p>
-	 <p> The structure begins with a class called <span class="code2">dbObject </span> declared in <span class="code2">uiucrehome/lib/misc/dbObject.php</span>  that has variables for the name of the table, array of column names in the table, and the last query. By setting up models for each table based on the <span class="code2">dbObject</span>  class in the folder <span class="code2">uiucrehome/lib/models</span> , the PHP script is able to create MySQL queries given the information of the column names of each table. Then scripts such as <span class="code2">insert_log.php</span>  and <span class="code2">insert_device.php</span>  are created to perform specific queries to insert different data into the database. Then the script <span class="code2">DB.php</span>  is called by functions in <span class="code2">dbObject.php</span>  to confirm the queries are accurate and do not have errors.</p>
+      <h2 id="access">PHP Framework and Database Access</h2>
+      <p>The database is a MySQL database which is accessed through MySQL queries. The setup of the PHP scripts allow data to be inserted and retrieved from the database with scripts such as <span class="code2">insert_log.php</span>. This setup includes a skeleton of a MySQL query and modifies it according to the arguments. These modified MySQL queries are used to insert and retrieve different types of data from different combinations using tables in the database.</p>
+     <p>The PHP Framework exists as an interface for the database to the front-end of the webapp. Each tables extends a class called <span class="code2">dbObject</span> which is defined in <span class="code2">/lib/misc/dbObject.php</span>. The extended table objects, or models, contain the name of the table, array of column names in the table. Additionally the objects hold the most recently executed query. By setting up models in the folder <span class="code2">/lib/models</span> for each table based on the <span class="code2">dbObject</span> class, the bootstrapped model objects are able to easily create common MySQL queries. Then scripts such as <span class="code2">insert_log.php</span>  and <span class="code2">insert_device.php</span> are created to perform specific queries to insert different data into the database. Then the script <span class="code2">DB.php</span>  is called by functions in <span class="code2">dbObject.php</span> to confirm the queries are accurate and do not have errors.</p>
 	  </div>
-
-	<div>
-      <h2 id="read_serial">Read Monitoring Data</h2>
-	<p>The script <span class="code2">PowerRead.php</span> in the folder <span class="code2">uiucrehome/scripts</span> is specifically used to read power data from the Xbee chip and log into the database. This script can be called with a cron script to set up the server to log data repeatedly every few hours, minutes or seconds. The temperature and water monitoring devices can follow the layout of the <span class="code2">PowerRead.php</span> script to read data through the serial</p>
-    </div>
 
     <div>
       <h2 id="bootstrap">Bootstrap Process</h2>
       <p>For PHP files in the app to take advantage of the PHP framework, they must be bootstrapped. To initiate this process, the file must include the /lib/http/bootstrap.php file. The bootstrap file includes the config file, sets constants, and includes all the necessary library files. Finally the database model objects are initialized and the database connection is created. After a script includes the bootstrap.php file, it may successfully use the DB api to access and modify database records.</p>
     </div>
+
+
+	<div>
+    <h2 id="read_serial">Read Monitoring Data</h2>
+    <p>The script <span class="code2">PowerRead.php</span> in the folder <span class="code2">uiucrehome/scripts</span> is specifically used to read power data from the Xbee chip and log into the database. This script can be called with a cron script to set up the server to log data repeatedly every few hours, minutes or seconds. The temperature and water monitoring devices can follow the layout of the <span class="code2">PowerRead.php</span> script to read data through the serial</p>
+    </div>
+
   </body>
 </html>
