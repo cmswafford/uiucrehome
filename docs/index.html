@@ -36,7 +36,7 @@
           <li>50GB Solid State Drive - <a href="http://www.newegg.com/Product/Product.aspx?Item=N82E16820227531">OCZ Agility 2 OCZSSD2-2AGT50G</a></li>
         </ul>
       </p>
-      <p>To provide a home network, a <a href="http://www.newegg.com/Product/Product.aspx?Item=33-124-190">Linksys WRT54GL</a> router was set up and configured with Tomato.</p>
+      <p>To provide a home network, a <a href="http://www.newegg.com/Product/Product.aspx?Item=33-124-190">Linksys WRT54GL</a> router was set up. Additionally, <a href="http://www.polarcloud.com/tomato">Tomato</a> v1.28 was installed as custom firmware. The motivation for this was to use the Static DHCP feature in Tomato. The router was configured to always assign the server the IP address 192.168.0.110. Without reserving a specific IP address for the server, the link to the app on the iPad would get outdated if the router was ever restarted.</p>
     </div>
 
     <h2 id="software">Installing & Configuring Software</h2>
@@ -76,9 +76,9 @@ sudo apache2ctl graceful
         <li><a href="http://git-scm.com/download">Download</a> and install git</li>
         <li>Checkout the <a href="https://github.com/cmswafford/uiucrehome">uiucrehome repository</a> on your system.
           <span class="code">git clone git@github.com:cmswafford/uiucrehome.git</span>
-         <p>This will create a folder named uiucrehome in your current directory. This project will have all the files necessary to host the application.</p>
         </li>
       </ol>
+         <p>This will create a folder named uiucrehome in your current directory. This project will have all the files necessary to host the application.</p>
     </div>
 
     <h2 id="database_struct">Database Structure</h2>
@@ -110,6 +110,11 @@ sudo apache2ctl graceful
 		<li>data values, in the  or solarorder specified by the script</li>
     </ol>
 	<p>The script <span class="code2">PowerRead.php</span> in the folder <span class="code2">/uiucrehome/scripts</span> is specifically used to read power data from the Xbee chip and log into the database. This script can be called with a cron script to set up the server to log data repeatedly every few hours, minutes or seconds. The temperature and water monitoring devices can follow the layout of the <span class="code2">PowerRead.php</span> script to read data through the serial</p>
+    </div>
+
+    <div>
+      <h2 id="bootstrap">Bootstrap Process</h2>
+      <p>For PHP files in the app to take advantage of the PHP framework, they must be bootstrapped. To initiate this process, the file must include the /lib/http/bootstrap.php file. The bootstrap file includes the config file, sets constants, and includes all the necessary library files. Finally the database model objects are initialized and the database connection is created. After a script includes the bootstrap.php file, it may successfully use the DB api to access and modify database records.</p>
     </div>
   </body>
 </html>
