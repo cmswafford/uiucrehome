@@ -19,6 +19,9 @@
       <li><a href="#repository">Setting Up the repository</a></li>
       <li><a href="#database_struct">Database Structure</a></li>
       <li><a href="#modify_log">Logging Data Modification</a></li>
+      <li><a href="#access">Database Access</a></li>
+      <li><a href="#read_serial">Read Monitoring Data</a></li>
+      <li><a href="#bootstap">Bootstrap Process</a></li>
     </ul>
 
     <h2 id="intro">Introduction</h2>
@@ -109,7 +112,17 @@ sudo apache2ctl graceful
 		<li>the device_id</li>
 		<li>data values, in the  or solarorder specified by the script</li>
     </ol>
-	<p>The script <span class="code2">PowerRead.php</span> in the folder <span class="code2">/uiucrehome/scripts</span> is specifically used to read power data from the Xbee chip and log into the database. This script can be called with a cron script to set up the server to log data repeatedly every few hours, minutes or seconds. The temperature and water monitoring devices can follow the layout of the <span class="code2">PowerRead.php</span> script to read data through the serial</p>
+	</div>
+
+	<div>
+      <h2 id="access">Database Access</h2>
+      <p>The database is a MySQL database which is accessed through MySQL queries. The setup of the PHP scripts allow data to be inserted and retrieved from the database with scripts such as <span class="code2">insert_log.php.</span>  This setup includes a skeleton of a MySQL query and modifies it according to the arguments. These modified MySQL queries are used to insert and retrieve different types of data from different combinations using tables in the database.</p>
+	 <p> The structure begins with a class called <span class="code2">dbObject </span> declared in <span class="code2">uiucrehome/lib/misc/dbObject.php</span>  that has variables for the name of the table, array of column names in the table, and the last query. By setting up models for each table based on the <span class="code2">dbObject</span>  class in the folder <span class="code2">uiucrehome/lib/models</span> , the PHP script is able to create MySQL queries given the information of the column names of each table. Then scripts such as <span class="code2">insert_log.php</span>  and <span class="code2">insert_device.php</span>  are created to perform specific queries to insert different data into the database. Then the script <span class="code2">DB.php</span>  is called by functions in <span class="code2">dbObject.php</span>  to confirm the queries are accurate and do not have errors.</p>
+	  </div>
+
+	<div>
+      <h2 id="read_serial">Read Monitoring Data</h2>
+	<p>The script <span class="code2">PowerRead.php</span> in the folder <span class="code2">uiucrehome/scripts</span> is specifically used to read power data from the Xbee chip and log into the database. This script can be called with a cron script to set up the server to log data repeatedly every few hours, minutes or seconds. The temperature and water monitoring devices can follow the layout of the <span class="code2">PowerRead.php</span> script to read data through the serial</p>
     </div>
 
     <div>
