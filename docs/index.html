@@ -40,7 +40,7 @@
           <li>50GB Solid State Drive - <a href="http://www.newegg.com/Product/Product.aspx?Item=N82E16820227531">OCZ Agility 2 OCZSSD2-2AGT50G</a></li>
         </ul>
       </p>
-      <p>To provide a home network, a <a href="http://www.newegg.com/Product/Product.aspx?Item=33-124-190">Linksys WRT54GL</a> router was set up. Additionally, <a href="http://www.polarcloud.com/tomato">Tomato</a> v1.28 was installed as custom firmware. The motivation for this was to use the Static DHCP feature in Tomato. The router was configured to always assign the server the IP address 192.168.0.110. Without reserving a specific IP address for the server, the link to the app on the iPad would get outdated if the router was ever restarted.</p>
+      <p>To provide a home network, a <a href="http://www.newegg.com/Product/Product.aspx?Item=33-124-190">Linksys WRT54GL</a> router was set up. Additionally, <a href="http://www.polarcloud.com/tomato">Tomato</a> v1.28 was installed as custom firmware. The motivation for this was to use the Static DHCP feature in Tomato. The router was configured to always assign the server the IP address 192.168.0.110. Without reserving a specific IP address for the server, the link to the app on the iPad would get outdated if the router was ever restarted. -CMS</p>
     </div>
 
     <h2 id="software">Installing & Configuring Software</h2>
@@ -109,7 +109,7 @@ sudo apache2ctl graceful
 	  Each device in the <i>devices</i> table also has the column for <i>off_or_on</i>, information that will also be used by the power monitoring page for the status of each device. 
 	  The <i>metadata</i> column for the <i>devices</i> table is used to store information about the object each device is monitoring, such as the name of the object, manufacturer of the object, life expectancy of the object, and/or the date the object was bought.</p>
 	<p>The <i>categories</i> and <i>rooms</i> tables are used for matching the names of each category and room to an ID number. Each of the logging tables, <i>power_logs</i>, <i>temperature_logs</i>, <i>water_logs</i>, and <i>power_logs</i> are used to store all the relevant data for monitoring each device. The columns of the logging table consist of the ID of each logging entry, the device ID that the logging entry is associated to, the logging data relevant to each type of monitoring, and the time that logging entry was created. </p>
-	<p>For the <i>power_logs</i> table, the relevant data for power monitoring that is stored is the RMS voltage, RMS current, apparent power, real power, power factor and power factor angle. The relevant data stored for the <i>temperature_logs</i> and <i>water_logs</i> table are each currently set as one column named <i>value</i> because the temperature and water monitoring devices have not been set up to connect with the server yet. The <i>created_at</i> column for each of the monitoring devices is used to store the time of each logging entry. This data can be used by the user interface to either display instantaneous logging data, or data accumulated over a period of time. By using the <i>created_at</i> column for each logging table, the user interface is able to display graphs that show logging data spanning from the last four hours, to the last three days.</p>
+	<p>For the <i>power_logs</i> table, the relevant data for power monitoring that is stored is the RMS voltage, RMS current, apparent power, real power, power factor and power factor angle. The relevant data stored for the <i>temperature_logs</i> and <i>water_logs</i> table are each currently set as one column named <i>value</i> because the temperature and water monitoring devices have not been set up to connect with the server yet. The <i>created_at</i> column for each of the monitoring devices is used to store the time of each logging entry. This data can be used by the user interface to either display instantaneous logging data, or data accumulated over a period of time. By using the <i>created_at</i> column for each logging table, the user interface is able to display graphs that show logging data spanning from the last four hours, to the last three days. - JP</p>
     </div>
 
     <h2 id="modify_log">Logging Data Modification</h2>
@@ -128,12 +128,13 @@ sudo apache2ctl graceful
 		<li>the device_id</li>
 		<li>data values, in the  or solarorder specified by the script</li>
     </ol>
+	-JP
 	</div>
 
 	<div>
       <h2 id="access">PHP Framework and Database Access</h2>
       <p>The database is a MySQL database which is accessed through MySQL queries. The setup of the PHP scripts allow data to be inserted and retrieved from the database with scripts such as <span class="code2">insert_log.php</span>. This setup includes a skeleton of a MySQL query and modifies it according to the arguments. These modified MySQL queries are used to insert and retrieve different types of data from different combinations using tables in the database.</p>
-     <p>The PHP Framework exists as an interface for the database to the front-end of the webapp. Each tables extends a class called <span class="code2">dbObject</span> which is defined in <span class="code2">/lib/misc/dbObject.php</span>. The extended table objects, or models, contain the name of the table, array of column names in the table. Additionally the objects hold the most recently executed query. By setting up models in the folder <span class="code2">/lib/models</span> for each table based on the <span class="code2">dbObject</span> class, the bootstrapped model objects are able to easily create common MySQL queries. Then scripts such as <span class="code2">insert_log.php</span>  and <span class="code2">insert_device.php</span> are created to perform specific queries to insert different data into the database. Then the script <span class="code2">DB.php</span>  is called by functions in <span class="code2">dbObject.php</span> to confirm the queries are accurate and do not have errors.</p>
+     <p>The PHP Framework exists as an interface for the database to the front-end of the webapp. Each tables extends a class called <span class="code2">dbObject</span> which is defined in <span class="code2">/lib/misc/dbObject.php</span>. The extended table objects, or models, contain the name of the table, array of column names in the table. Additionally the objects hold the most recently executed query. By setting up models in the folder <span class="code2">/lib/models</span> for each table based on the <span class="code2">dbObject</span> class, the bootstrapped model objects are able to easily create common MySQL queries. Then scripts such as <span class="code2">insert_log.php</span>  and <span class="code2">insert_device.php</span> are created to perform specific queries to insert different data into the database. Then the script <span class="code2">DB.php</span>  is called by functions in <span class="code2">dbObject.php</span> to confirm the queries are accurate and do not have errors. -JP</p>
 	  </div>
 
     <div>
@@ -144,7 +145,7 @@ sudo apache2ctl graceful
 
 	<div>
     <h2 id="read_serial">Read Monitoring Data</h2>
-    <p>The script <span class="code2">PowerRead.php</span> in the folder <span class="code2">uiucrehome/scripts</span> is specifically used to read power data from the Xbee chip and log into the database. This script can be called with a cron script to set up the server to log data repeatedly every few hours, minutes or seconds. The temperature and water monitoring devices can follow the layout of the <span class="code2">PowerRead.php</span> script to read data through the serial.</p>
+    <p>The script <span class="code2">PowerRead.php</span> in the folder <span class="code2">uiucrehome/scripts</span> is specifically used to read power data from the Xbee chip and log into the database. This script can be called with a cron script to set up the server to log data repeatedly every few hours, minutes or seconds. The temperature and water monitoring devices can follow the layout of the <span class="code2">PowerRead.php</span> script to read data through the serial. -JP</p>
     </div>
 
   </body>

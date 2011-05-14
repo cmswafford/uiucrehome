@@ -1,4 +1,8 @@
 <?php
+
+/* This script read from the Arudino Fio and stores the data into the database
+ * insert the device id into the array to have the script read power data from the device 
+ */
 include '../lib/misc/functions.php';
 
 $file_location = 'power.py';
