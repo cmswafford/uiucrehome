@@ -27,7 +27,7 @@
 
     <h2 id="intro">Introduction</h2>
     <div>
-      <p>The UIUC Re_home webapp is a tool to monitor and control the home. Necessarily, the webapp must be hosted by a server somewhere; the ideal solution for this is to host the project from a server on the Local Area Network within the home. For our project, we have purchased a modest computer and used a combination of common open-source software to serve the project to client devices, e.g. iPad. The app uses a LAMP software stack to host the application. The linux distribution of choice in this project is Ubuntu 10.04 LTS. This guide will provide all commands based on an Ubuntu system.</p>
+      <p>The UIUC Re_home webapp is a tool to monitor and control the home. Necessarily, the webapp must be hosted by a server somewhere; the ideal solution for this is to host the project from a server on the Local Area Network within the home. For our project, we have purchased a modest computer and used a combination of common open-source software to serve the project to client devices, e.g. iPad. The app uses a LAMP software stack to host the application. The linux distribution of choice in this project is Ubuntu 10.04 LTS. This guide will provide all commands based on an Ubuntu system. -CMS</p>
     </div>
 
     <h2 id="hardware">Hardware Specs</h2>
@@ -70,6 +70,7 @@
 ln -s ../sites-available/uiucrehome
 sudo apache2ctl graceful
 </pre>
+ -CMS
     </div>
 
     <h2 id="repository">Setting Up the Repository</h2>
@@ -82,7 +83,7 @@ sudo apache2ctl graceful
           <span class="code">git clone git@github.com:cmswafford/uiucrehome.git</span>
         </li>
       </ol>
-         <p>This will create a folder named uiucrehome in your current directory. This project will have all the files necessary to host the application.</p>
+         <p>This will create a folder named uiucrehome in your current directory. This project will have all the files necessary to host the application. -CMS</p>
     </div>
 
     <h2 id="directory_tree">Project Directory Tree</h2>
@@ -96,6 +97,7 @@ sudo apache2ctl graceful
         <li><strong>public</strong> - DOCUMENT_ROOT for the apache virtual host. Anything in this folder is acessible from the ROOT_URL using a browser.</li>
         <li><strong>scripts</strong> - This folder contains all the API scripts to insert data into the database.</li>
       </ul>
+      <p>-CMS</p>
     </div>
 
     <h2 id="database_struct">Database Structure</h2>
@@ -136,13 +138,13 @@ sudo apache2ctl graceful
 
     <div>
       <h2 id="bootstrap">Bootstrap Process</h2>
-      <p>For PHP files in the app to take advantage of the PHP framework, they must be bootstrapped. To initiate this process, the file must include the /lib/http/bootstrap.php file. The bootstrap file includes the config file, sets constants, and includes all the necessary library files. Finally the database model objects are initialized and the database connection is created. After a script includes the bootstrap.php file, it may successfully use the DB api to access and modify database records.</p>
+      <p>For PHP files in the app to take advantage of the PHP framework, they must be bootstrapped. To initiate this process, the file must include the /lib/http/bootstrap.php file. The bootstrap file includes the config file, sets constants, and includes all the necessary library files. Finally the database model objects are initialized and the database connection is created. After a script includes the bootstrap.php file, it may successfully use the DB api to access and modify database records. -CMS</p>
     </div>
 
 
 	<div>
     <h2 id="read_serial">Read Monitoring Data</h2>
-    <p>The script <span class="code2">PowerRead.php</span> in the folder <span class="code2">uiucrehome/scripts</span> is specifically used to read power data from the Xbee chip and log into the database. This script can be called with a cron script to set up the server to log data repeatedly every few hours, minutes or seconds. The temperature and water monitoring devices can follow the layout of the <span class="code2">PowerRead.php</span> script to read data through the serial</p>
+    <p>The script <span class="code2">PowerRead.php</span> in the folder <span class="code2">uiucrehome/scripts</span> is specifically used to read power data from the Xbee chip and log into the database. This script can be called with a cron script to set up the server to log data repeatedly every few hours, minutes or seconds. The temperature and water monitoring devices can follow the layout of the <span class="code2">PowerRead.php</span> script to read data through the serial.</p>
     </div>
 
   </body>
