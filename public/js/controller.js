@@ -29,7 +29,15 @@ var bindNavigationButtons = function() {
 		requestedID = "#" + requestedID;
 		requestedID = requestedID.substr(0, requestedID.length - 4);
 		var offset = -788;
-		if(requestedID == "#portal") offset = 0;
+		if(requestedID == "#portal") {
+			clearInterval(statusCheck);
+			offset = 0;
+		}
+		else if(requestedID == '#monitor') {
+			getRelayStates();
+			statusCheck = setInterval('getRelayStates()', 3000);
+			// Get other pertainant info
+		}
 		$("#landscape").stop().animate({'opacity': 0.0}, 400, function() {
 			$('.subpage').addClass("inactive"); 
 			$(requestedID).removeClass("inactive");
@@ -117,7 +125,7 @@ bindCategoryButtons();
  */
 var bindDeviceButtons = function() {
 	$(".device").bind("click", function(e) {
-		$('#space').html("<h3>"+this.id+"</h3>");
+		$('#space').html("<h3>"+this.title+"</h3>");
 		$('.device').removeClass('deviceSelected');
 		Cufon.replace('h3', {fontFamily: 'Thin'});
 		$('#'+this.id).addClass('deviceSelected');
@@ -146,11 +154,13 @@ bindDeviceButtons();
 
 /**
  * This function binds the events for the switches both on the water monitoring 
- * and the energy monitoring pages. There is not yet logic to send an ajax message to the server 
- * in order to control the device
+ * and the energy monitoring pages. 
  */
+var aRequestQueue = [0,0,0,0,0,0,0,0,0,0,0,0,0];
 var bindSwitches = function() {
 	$(".hSwitch").bind("click", function(e) {
+ 		clearInterval(statusCheck);
+		setTimeout('setInterval("getRelayStates()", 3000)', 5000);
 		if($('#waterSwitchHorizontal').hasClass('offSwitch')){
 			$("#waterSwitchHorizontal").stop().animate({'bottom': '105px', 'background': '-webkit-gradient(linear, left top, left bottom, from(#ff3750), color-stop(0.40,rgba(233,20,20,1)), color-stop(0.45,rgba(200,20,20,1)), to(#5f000c))'}, 80, function() {
 				$('#waterSwitchHorizontal').removeClass("offSwitch"); 
@@ -168,17 +178,63 @@ var bindSwitches = function() {
 			$('#lightSwitchHorizontal').removeClass("offSwitch"); 
 			$('.lightSwitchText').html('ON');
 			Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
-			$('.deviceSelected').removeClass('off');
-			$('.deviceSelected').addClass('inUse');
-		
+			var dev_id = $(".deviceSelected").attr('id');
+			dev_id = dev_id.slice(2);
+			dev_id = parseFloat(dev_id);
+			// Ajax call to lightsOn.php with dev_id as argument
+			// if it returns -1 it was a failure, so reset the switch
+			if (aRequestQueue[dev_id] == 1) {
+				$("#lightSwitchHorizontal").stop().addClass('offSwitch');
+				$('#lightSwitchHorizontal').removeClass("onSwitch"); 
+				$('.lightSwitchText').html('OFF');
+				Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
+			}
+			else {
+				aRequestQueue[dev_id] = 1;
+				$.ajax({
+					url: "/ajax/lightsOn.php",
+					data: {device: dev_id},
+					type: "POST",
+					success: function(data) {
+						$('.deviceSelected').removeClass('off');
+						$('.deviceSelected').addClass('inUse');
+						aRequestQueue[dev_id] = 0;
+						floorplanStatus[dev_id] = 1;
+					}
+				});
+			}
+			
 		}
 		else {
 			$("#lightSwitchHorizontal").stop().addClass('offSwitch');
 			$('#lightSwitchHorizontal').removeClass("onSwitch"); 
 			$('.lightSwitchText').html('OFF');
 			Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
-			$('.deviceSelected').addClass('off');
-			$('.deviceSelected').removeClass('inUse');
+			var dev_id = $(".deviceSelected").attr('id');
+			dev_id = dev_id.slice(2);
+			dev_id = parseFloat(dev_id);
+			// Ajax call to lightsOut.php with dev_id as argument
+			// if it returns -1 it was a failure, so reset the switch
+			if (aRequestQueue[dev_id] == 1) {
+				$("#lightSwitchHorizontal").stop().addClass('onSwitch');
+				$('#lightSwitchHorizontal').removeClass("offSwitch"); 
+				$('.lightSwitchText').html('ON');
+				Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
+			}			
+			else {
+				aRequestQueue[dev_id] = 1;
+				$.ajax({
+					url: "/ajax/lightsOut.php",
+					data: {device: dev_id},
+					type: "POST",
+					success: function(data) {
+						$('.deviceSelected').removeClass('inUse');
+						$('.deviceSelected').addClass('off');
+						aRequestQueue[dev_id] = 0;
+						floorplanStatus[dev_id] = 0;
+					}
+				});
+			}
 		}
 	});
 };

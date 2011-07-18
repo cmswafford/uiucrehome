@@ -4,8 +4,7 @@
 $fMicroStart = microtime();
 list ( $fMicroSecs, $fSecs ) = explode ( " ", $fMicroStart );
 define ( "START_TIME", $fMicroStart+$fSecs );
-
-require_once( dirname(__FILE__).'/../../config/config.php' );
+require_once( '/home/uiucsd/www/uiucrehome/config/config.php' );
 require_once( $aConfig['config_path'].'constants.php' );
 require_once( LIB.'misc/functions.php' );
 
@@ -35,6 +34,11 @@ $oDevices         = new Devices();
 $oPowerLogs       = new PowerLogs();
 $oTemperatureLogs = new TemperatureLogs();
 $oWaterLogs       = new WaterLogs();
+$oRelays       	  = new Relays();
 
 $rDB = DB::connect( $aConfig['mysql']['host'], $aConfig['mysql']['user'], $aConfig['mysql']['password'], $aConfig['mysql']['database'] );
 unset($aConfig['mysql']['password']); # Not good to have this info floating around ;)
+
+$aNotifications	  = array();
+require_once( '/home/uiucsd/www/uiucrehome/lib/http/notify_setup.php' );
+$aNotifyReturn    = array();

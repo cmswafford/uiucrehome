@@ -13,7 +13,7 @@
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icon.png" />
 		
 		<!-- StyleSheets -->
-		<link rel="stylesheet" href="css/view.css" />
+		<!-- <link rel="stylesheet" href="css/view.css" /> -->
 		<link rel="stylesheet" href="css/hvacPage.css" />
 		<link rel="stylesheet" href="css/portalPage.css" /> 
 		<link rel="stylesheet" href="css/waterPage.css" /> 
@@ -80,10 +80,10 @@
 						
 							<div class="viewport centerGraphViewport">
 								<div id="centerGraphLandscape" class="landscape centerGraphLandscape">
-									<div id="portal-graph-0" class="lightbox inner centered floatLeft">Time vs. Power over the past 4 hours</div>
-									<div id="portal-graph-1" class="lightbox inner floatLeft">Time vs. Power over the past 12 hours</div>
-									<div id="portal-graph-2" class="lightbox floatLeft">Time vs. Power over the past 24 hours</div>
-									<div id="portal-graph-3" class="lightbox floatLeft">Time vs. Power over the past 3 days</div>
+									<div id="graphic1" class="lightbox inner centered floatLeft">Time vs. Power over the past 4 hours</div>
+									<div id="graphic2" class="lightbox inner floatLeft">Time vs. Power over the past 12 hours</div>
+									<div id="graphic3" class="lightbox floatLeft">Time vs. Power over the past 24 hours</div>
+									<div id="graphic4" class="lightbox floatLeft">Time vs. Power over the past 3 days</div>
 								</div>
 							</div>
 							<div class="indicators">
@@ -414,9 +414,9 @@
 						<div id="space"><h3>Entire House</h3></div>
 						<div id="usageStats">
 							<div id="lightSwitch" class="lightSwitch inactive"><div id="lightSwitchVertical" class="vLightSwitch"></div><div id="lightSwitchHorizontal" class="hLightSwitch offSwitch"><h2 class="lightSwitchText ontext inactive">ON</h2><h2 class="lightSwitchText offtext">OFF</h2></div></div>
-							<h3>Current power usage: <span id="currentUsage">34 watts</span></h3>
-							<h3>Total usage today: <span id="todayUsage">345 kwh</span></h3>
-							<h3>Total usage this week: <span id="weekUsage">1397 kwh</span></h3>
+							<h3>Current power usage: <span id="currentUsage">34 W</span></h3>
+							<h3>Energy usage today: <span id="todayUsage">345 kWh</span></h3>
+							<h3>Energy usage this week: <span id="weekUsage">1397 kWh</span></h3>
 							<h3>Estimated Cost: <span id="costUsage">$0.14/hr</span></h3>
 						</div>
 						<div class="spacer noText">spacer</div>
@@ -447,55 +447,33 @@
 					</div>
 						<!-- These are the devices in the house, all of these are circular divs positioned absolutely -->
 						<!-- They can be repositioned by atering monitor.css -->
-						<div id="d0000" class="device off livingroom"></div>
-						<div id="d0001" class="device inUse livingroom"></div>
-						<div id="d0002" class="device inUse"></div>
-						<div id="d0003" class="device inUse livingroom light"></div>
-						<div id="d0004" class="device inUse livingroom light"></div>
-						<div id="d0005" class="device inUse"></div>
-						<div id="d0006" class="device inUse light"></div>
-						<div id="d0007" class="device off livingroom"></div>
-						<div id="d0008" class="device inUse light"></div>
-						<div id="d0009" class="device inUse hallway appliance"></div>
-						<div id="d0010" class="device inUse livingroom light"></div>
-						<div id="d0011" class="device off hallway appliance"></div>
-						<div id="d0012" class="device inUse"></div>
-						<div id="d0013" class="device inUse light"></div>
-						<div id="d0014" class="device off livingroom light"></div>
-						<div id="d0015" class="device inUse"></div>
-						<div id="d0016" class="device off kitchen light"></div>
-						<div id="d0017" class="device inUse livingroom"></div>
-						<div id="d0018" class="device off kitchen appliance"></div>
-						<div id="d0019" class="device off kitchen"></div>
-						<div id="d0020" class="device inUse kitchen appliance"></div>
+						<div id="d0000" title="Dining Room Outlet" class="device off livingroom"></div>
+						<div id="d0001" title="Relay 1" class="device inUse livingroom light"></div>
+						<div id="d0002" title="Relay 2" class="device inUse light"></div>
+						<div id="d0003" title="Relay 3" class="device inUse livingroom light"></div>
+						<div id="d0004" title="Relay 4" class="device inUse livingroom light"></div>
+						<div id="d0005" title="Relay 5" class="device inUse light"></div>
+						<div id="d0006" title="Relay 6" class="device inUse light"></div>
+						<div id="d0007" title="Relay 7" class="device off livingroom light"></div>
+						<div id="d0008" title="Relay 8" class="device inUse light"></div>
+						<div id="d0009" title="Relay 9" class="device inUse hallway appliance light"></div>
+						<div id="d0010" title="Relay 10" class="device inUse livingroom light"></div>
+						<div id="d0011" title="Relay 11" class="device off hallway appliance light"></div>
+						<div id="d0012" title="Relay 12" class="device inUse light"></div>
+						<div id="d0013" title="tbd" class="device inUse"></div>
+						<div id="d0014" title="tbd" class="device off livingroom"></div>
+						<div id="d0015" title="tbd" class="device inUse"></div>
+						<div id="d0016" title="tbd" class="device off kitchen"></div>
+						<div id="d0017" title="tbd" class="device inUse livingroom"></div>
+						<div id="d0018" title="tbd" class="device off kitchen appliance"></div>
+						<div id="d0019" title="tbd" class="device off kitchen"></div>
+						<div id="d0020" title="tbd" class="device inUse kitchen appliance"></div>
 				</div> <!-- End Energy Monitor -->
 				
 				<!-- This div will be used to display notifications it is initially inactive and will display messages in h3 tags when necessary -->		
-				<div id="notify" class="notify">
+				<div id="notify" class="notify inactive">
 					<div id="notifyButton" class="notifyButton"></div>
 					<div id="wrapper">
-						<ul>
-							<li><div class="alert floatLeft"></div><h2>Front Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Back Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Front Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Back Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-						</ul>
 					</div>
 				</div><!-- end Notification div -->
 			
@@ -512,6 +490,7 @@
 	<script type="text/javascript" src="js/portalGraphs.js"></script> <!-- Configuration for all of the minor graphs -->
 	<script type="text/javascript" src="js/monitorCharts.js"></script> <!-- Configuration for the energy monitor page graphs -->
 	<script type="text/javascript" src ="js/view.js"></script> <!-- Logic for updating the page -->
+	<script type="text/javascript" src ="js/functions.js"></script> <!-- Ajax Functions for the Controller -->	
 	<script type="text/javascript" src ="js/controller.js"></script> <!-- Logic for controlling the gui -->
 
 	<!--<script type="text/javascript" src ="js/main.js"></script>-->
